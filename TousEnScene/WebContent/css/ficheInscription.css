@@ -1,0 +1,144 @@
+.labelData150Num {
+	display: inline-block;
+/* 	border : 2px solid black ; */
+	width : 400px;
+	left : 30px;
+	position : relative;
+}
+.labelData150 {
+	display: inline-block;
+/* 	border : 2px solid black ; */
+	width : 150px;
+	left : 30px;
+	position : relative;
+}
+
+.labelDataLine {
+	display: inline-block;
+/* 	border : 2px solid black ; */
+	width : 150px;
+	left : 700px;
+    position : absolute;
+}
+.labelDataLineAge {
+	display: inline-block;
+/* 	border : 2px solid black ; */
+	width : 10px;
+	left : 1000px;
+    position : absolute;
+}
+.labelData800{
+	display: inline-block;
+/* 	border : 2px solid black ;  */
+	width : 800px;
+	left : 30px;
+	position : relative ; 
+}
+.labelData600{
+	display: inline-block;
+/* 	border : 2px solid black ;  */
+	width : 600px;
+	left : 30px;
+	position : relative ;
+}	
+ 
+.labelData400{
+	display: inline-block;
+/* 	border : 2px solid black ;  */
+	width : 400px;
+	left : 30px;
+	position : relative ; 
+}
+
+.valueData {
+	width : 500px;
+	left : 10px;
+	position : relative ;
+}
+.valueDataLine {
+	width : 500px;
+	left : 850px;
+	position : absolute;
+}
+.valueDataLineAge {
+	width : 500px;
+	left : 1050px;
+	position : absolute;
+}
+#ErrRed {
+	background-color : red ;
+}
+.vert {
+	color : green;
+	width : 50px;
+	position : relative;
+	left:20px;
+}
+.rouge {
+	color : red;
+	width : 50px;
+	position : relative;
+	left:20px;
+}
+
+.bouton {
+	display: inline-block;
+	width : 200px;
+	left : 100px;
+	position : relative;
+	border : 2px solid black ;
+}
+#BtnPrecedent {
+	display: inline-block;
+	width : 200px;
+	left : 100px;
+	position : relative;
+	border : 2px solid black ;
+}
+#choixPage {
+	display: inline-block;
+	width : 100px;
+	left : 100px;
+	position : relative;
+	border : 2px solid black ;
+}
+#BtnSuivant{
+	display: inline-block;
+	width : 200px;
+	left : 100px;
+	position : relative ;
+	border : 2px solid black ;
+}
+.basdepage {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 12px;
+}
+.etoileRouge {  
+	color: red;
+}
+table {
+	width: 100%;
+	border: 1px solid black;
+    border-collapse: collapse;
+    align : left;
+}
+.ligneTab, .colonneTab {
+	border: 1px solid black;
+    border-collapse: collapse;
+    align : left;
+    font-size: 15px;
+}
+.theadTab {
+	border: 1px solid black;
+    border-collapse: collapse;
+    text-align : center;
+    background-color: #f1f1c1;
+    font-size: 12px;
+    font-weight: bold;
+}
+.tableContainer{
+	margin: 40px auto;
+	padding: 0 15px;
+	width:98%;
+    margin-top: 20px;
+}

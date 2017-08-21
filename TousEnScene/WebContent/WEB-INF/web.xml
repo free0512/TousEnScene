@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Application Assistante Maternelle</display-name>
+  <servlet>
+  <servlet-name>action</servlet-name>
+  <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+   <init-param>
+         <param-name>chainConfig</param-name>
+         <param-value>org/apache/struts/tiles/chain-config.xml</param-value>
+     </init-param>
+  <init-param>	
+  	<param-name>config</param-name>
+  	<param-value>/WEB-INF/struts-config.xml</param-value>
+  </init-param>
+  <init-param>
+  	<param-name>debug</param-name>
+  	<param-value>2</param-value>
+  </init-param>
+  <init-param>
+  	<param-name>detail</param-name>
+  	<param-value>2</param-value>
+  </init-param>
+  <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>action</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+<!--   Page d'acceuil de l'application -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+<jsp-config>
+<!-- 	Description des tags -->
+	<taglib>
+		<taglib-uri>struts-bean</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-html</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-html.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-logic</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-logic.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-nested</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-nested.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-tiles</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-tiles.tld</taglib-location>
+	</taglib>
+</jsp-config>
+</web-app>

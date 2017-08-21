@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<definition name="modele" path="/jsp/modele/principale.jsp">
+		<put name="titre" value="Page Principale"/>
+		<put name="enteteImage" value="/jsp/modele/enteteImage.jsp"/>
+		<put name="enteteText" value="/jsp/modele/enteteText.jsp"/> 
+		<put name="menugauche" value="/jsp/modele/menugauche.jsp"/>
+		<put name="corps" value="/jsp/modele/corps.jsp"/>
+		<put name="pieds" value="/jsp/modele/pieds.jsp"/>
+	</definition>
+
+<!-- 		Création de la fiche d'inscription	 -->
+	<definition name="moduleFiche" extends="modele">
+		<put name="titre" value="Création d'un adhérent" />
+		<put name="corps" value="/jsp/FicheInscription.jsp"/>
+	</definition>
+
+<!-- Liste des adhérents -->
+	<definition name="moduleListeAdherent" extends="modele">
+		<put name="titre" value="Liste des adhérents" />
+		<put name="corps" value="/jsp/ListeAdherents.jsp"/>
+	</definition>
+
+<!--  	Ecran de connexion login.jsp -->
+	<definition name="modele2" extends="modele">
+		<put name="titre" value="Connexion"/>
+		<put name="corps" value="/jsp/login.jsp"/>
+	</definition>
+	
+<!-- 	Menu de l'application - screen.jsp -->
+	<definition name="modele3" extends="modele">
+		<put name="titre" value="menu general"/>
+		<put name="corps" value="/jsp/screen.jsp"/>
+	</definition>
+	
+<!-- 	Fiche Assistante Maternelle -->
+	<definition name="modele4" extends="modele">
+		<put name="titre" value="Fiche Assistante"/>
+		<put name="corps" value="/jsp/ficheAssist.jsp"/>
+	</definition>
+	
+<!-- 		Liste Assistante MAternelle -->
+	<definition name="modele5" extends="modele">
+		<put name="titre" value="Listes des assistantes"/>
+		<put name="corps" value="/jsp/listeFicheAssistante.jsp"/>
+	</definition>
+	
+</tiles-definitions>

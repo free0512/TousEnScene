@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config 
+PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+<data-sources> 
+ <data-source type="org.apache.commons.dbcp.BasicDataSource" >
+   <set-property property="driverClassName" value="org.postgresql.Driver"/>	
+   <set-property property="url" value="jdbc:postgresql://localhost:5432/TES"/>	
+   <set-property property="username" value="postgres"/>	
+   <set-property property="password" value="supersaid"/>	
+   <set-property property="maxActive" value="10"/>	
+   <set-property property="maxWait" value="5000"/>	
+   <set-property property="defaultAutoCommit" value="false"/>
+   <set-property property="defaultReadOnly" value="false"/>		
+ </data-source>
+</data-sources>
+
+<form-beans>
+	<form-bean name="ficheInscription" type="src.ficheInscription.FicheInscriptionForm">
+	</form-bean>
+	<form-bean name="listeAdherentsForm" type="src.ficheInscription.ListeAdherentsForm">
+	</form-bean>
+</form-beans>
+
+<action-mappings>
+	<action path="/initialisation"
+			type="src.initialisation.initAction"
+			name="initForm">
+			<forward name="success" path= "modele"></forward>
+	</action>
+	<action path="/creationFiche"
+			name="ficheInscription"
+			type="src.ficheInscription.FicheInscriptionExecute">
+			<forward name="success" path="moduleFiche"/>
+	</action>
+	<action path="/listeAdherent"
+			name="listeAdherentsForm"
+			type="src.ficheInscription.ListeInscriptionExecute">
+			<forward name="success" path="moduleListeAdherent"/>	
+	</action>
+	<action path="/ficheInscription"
+			type="src.ficheInscription.FicheInscriptionLookUpDispatchAction"
+			name="ficheInscription"
+			input = "/jsp/FicheInscription.jsp"
+			parameter="action"
+			scope="session">
+			<forward name="success" path="moduleFiche"/>
+			<forward name="failed" path="moduleFiche"/>
+			<forward name="annulerFiche"  path="modele"/>
+	</action>
+	<action path="/listeAdherentJSP"
+			type="src.ficheInscription.ListeInscriptionLookUpDispatchAction"
+			name="listeAdherentsForm"
+			input="/jsp/ListeAdherents.jsp"
+			parameter="action"
+			scope="session"> 
+			<forward name="success" path="moduleListeAdherent"/>
+			<forward name="failed" path="moduleListeAdherent"/>
+			<forward name="annulerListe"  path="modele"/>
+	</action>
+</action-mappings>
+
+<message-resources parameter="ressources.ficheIns" />
+<message-resources parameter="ressources.erreurs" key="erreur"/> 
+
+<plug-in className="org.apache.struts.tiles.TilesPlugin">
+	<set-property  property="definitions-config"  value="/WEB-INF/tiles-defs.xml"/>
+	<set-property property="moduleAware" value="true"/>
+</plug-in>
+
+
+
+</struts-config>
