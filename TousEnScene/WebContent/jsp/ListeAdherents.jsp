@@ -98,7 +98,7 @@
 		</div>
 	</fieldset>
 <!-- 	Boutons de déplacement et de positionnement -->
-
+	<br>
 	<html:select styleId="choixPage" 
 				 name="listeAdherentsForm" property="choixPage">
 		<logic:present name="listeAdherentsForm" property="listePages">		 
