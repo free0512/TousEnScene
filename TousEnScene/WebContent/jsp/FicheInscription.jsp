@@ -14,11 +14,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ficheInscription.js"> 
 </script>
 	    	  
-<title> fiche Inscription </title>
+<title> fiche Inscription adhérent </title>
 </head>
 
 <body>
-	<h1> Bulletin d'Inscription de la saison </h1>
+	<h1> Bulletin d'Inscription de la saison  </h1>
 		
 	<html:form styleId="form" action="/ficheInscription.do">
 	

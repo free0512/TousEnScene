@@ -38,6 +38,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			name="listeAdherentsForm"
 			type="src.ficheInscription.ListeInscriptionExecute">
 			<forward name="success" path="moduleListeAdherent"/>	
+			<forward name="failed" path="moduleListeAdherent"/>
 	</action>
 	<action path="/ficheInscription"
 			type="src.ficheInscription.FicheInscriptionLookUpDispatchAction"
