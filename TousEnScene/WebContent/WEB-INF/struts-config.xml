@@ -33,6 +33,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			name="ficheInscription"
 			type="src.ficheInscription.FicheInscriptionExecute">
 			<forward name="success" path="moduleFiche"/>
+			<forward name="failed" path="moduleFiche"/>
 	</action>
 	<action path="/listeAdherent"
 			name="listeAdherentsForm"
