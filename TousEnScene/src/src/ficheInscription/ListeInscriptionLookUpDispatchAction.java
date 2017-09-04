@@ -2,6 +2,8 @@ package src.ficheInscription;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,15 +33,29 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 		map.put("zoneList", "defilement");
 	//	map.put("initialiser" , "init");
 		map.put("annuler", "annulerListe");
-	//	map.put("precedent", "pageSuivante");
+		map.put("ouvrirFiche", "ouvrirFicheAdh");
 		return map;
 	}
 
+	public ActionForward ouvrirFicheAdh (ActionMapping mapping ,
+			ActionForm form ,
+			HttpServletRequest request ,
+			HttpServletResponse response ) throws Exception {
+		
+		ListeAdherentsForm laForm = (ListeAdherentsForm) form ;
+		FicheInscriptionForm fiForm = new FicheInscriptionForm() ;
+		fiForm.setNumeroInterne(laForm.getRang());
+		FicheInscriptionExecute fi  = new FicheInscriptionExecute();
+		ActionForward af = fi.execute(mapping, fiForm, request, response);
+		
+		return mapping.findForward("fiche") ;
+	}
+	
 	public ActionForward annulerListe (ActionMapping mapping ,
 			ActionForm form ,
 			HttpServletRequest request ,
 			HttpServletResponse response ) {
-
+		
 		return mapping.findForward("annulerFiche") ;
 	}
 	
@@ -47,9 +63,10 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			ActionForm form ,
 			HttpServletRequest request ,
 			HttpServletResponse response ) throws Exception {
+		
 		ListeAdherentsForm laForm = (ListeAdherentsForm) form ;
 		laForm.setListeAdherents(null);
-		
+
 		return this.defilement(mapping, form, request, response);
 	}
 	
@@ -104,6 +121,13 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			err.add("erreur" , new ActionMessage("errchrgData"));
 			addErrors(request, err);
 			return mapping.findForward("failed") ;
+		}
+		finally {
+			if ( cnx != null ) {
+	            try {
+	                cnx.close();
+	            } catch ( SQLException ignore ) {}
+			}
 		}
 	}
 }

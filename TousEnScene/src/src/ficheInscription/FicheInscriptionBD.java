@@ -29,7 +29,7 @@ public class FicheInscriptionBD {
 		//ActionErrors err = new ActionErrors() ;
 		PreparedStatement st = null ;
 		//Statement st = null ;
-		ResultSet rs = null ;
+		ResultSet rs2 = null ;
 		String reqSQL = "insert into adherents (nomadh,    pread,   datnaissadh, adresse1, "
 				+ "adresse2, codpostal, ville,   sexadh,   majadh,  atladh,      regadh,"
 				+ "nompere,  prenpere,  nommere, prenmere, telpere, telmere,     emailpere, emailmere,"
@@ -108,7 +108,7 @@ public class FicheInscriptionBD {
 			//cnx.commit();
 			String reqSQLinterne = "select max(identifiant) from adherents" ;
 			Statement st2=cnx.createStatement() ;
-			ResultSet rs2 = st2.executeQuery(reqSQLinterne) ;
+			rs2 = st2.executeQuery(reqSQLinterne) ;
 			while (rs2.next()) {
 				fins.setNumeroInterne(rs2.getInt(1));
 			}
@@ -118,10 +118,53 @@ public class FicheInscriptionBD {
 			fins.setStatusInsert(0);
 			return mapping.findForward("failed") ;
 		} finally {
-			cnx.close();
+			rs2.close();
+			st.close();
+			
 		}
 	}
 
+	public FicheInscriptionForm lireFicheAdherent (ActionMapping mapping, 
+											Connection cnx, 
+			 								FicheInscriptionForm  form)
+			 								throws SQLException {
+		
+		Statement st = null ;
+		ResultSet rs = null ;
+		String reqSQL = "select * from adherents where identifiant=" + form.getNumeroInterne() ;
+		try {
+	
+			st = cnx.createStatement() ;
+			rs = st.executeQuery(reqSQL) ;
+			while (rs.next()) {
+				form.setNomEleve(rs.getString("nomadh").trim());
+				form.setPrenomEleve(rs.getString("pread").trim());
+				form.setClasseScolaire(rs.getString("clasadh").trim());
+				form.setAdresse1(rs.getString("adresse1").trim());
+				form.setAdresse2(rs.getString("adresse2").trim());
+				form.setCodePostal(rs.getInt("codpostal"));
+				form.setVille(rs.getString("ville").trim());
+			}
+			return form ;
+		} catch (SQLException e) {
+			return null;
+		}
+		finally {
+			if (rs != null) {
+				try { 
+					rs.close();
+				} catch (SQLException e) {}
+			}
+			if (st != null) {
+				try { 
+					st.close();
+				} catch (SQLException e) {
+					String er= "erue"; // juste pour débuger le SQLException
+				}
+			}
+		}
+			
+	}
 }
 
 	

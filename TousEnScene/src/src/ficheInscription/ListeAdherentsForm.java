@@ -18,6 +18,8 @@ public class ListeAdherentsForm  extends ActionForm{
 	private static final long serialVersionUID = 1L;
 
 	private String choixNomEleve, choixPrenomEleve ;
+	private int rang ;
+	private String selRadio ;
 
 	private List<FicheInscriptionForm> listeAdherents = null ;
 	private Pageable <FicheInscriptionForm> pagination = new Pageable<FicheInscriptionForm> (null) ;
@@ -29,6 +31,26 @@ public class ListeAdherentsForm  extends ActionForm{
 		//this.pagination=null;
 	}
 	
+	public String getSelRadio() {
+		return selRadio;
+	}
+
+
+
+	public void setSelRadio(String selRadio) {
+		this.selRadio = selRadio;
+	}
+
+
+
+	public   int getRang() {
+		return rang;
+	}
+
+	public   void setRang(int rang) {
+		this.rang = rang;
+	}
+
 	public String getChoixNomEleve() {
 		return choixNomEleve;
 	}

@@ -50,7 +50,6 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 											   throws Exception
 
 	{
-		FicheInscriptionForm fins = (FicheInscriptionForm) form ;
 		ActionErrors actionErrors = new ActionErrors() ;
 		
 		// Validation des informations saisie par l'utilisateur 
@@ -61,8 +60,7 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 		ConnextionBean cb = new ConnextionBean () ;
 		cb.getDataSystem();
 		Connection connexion = null;
-		PreparedStatement ps = null;
-		ResultSet resultSet = null ;
+		
 		try {
 			Class.forName(cb.getDriver()) ;
 		} catch ( ClassNotFoundException e ) 

@@ -40,6 +40,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			type="src.ficheInscription.ListeInscriptionExecute">
 			<forward name="success" path="moduleListeAdherent"/>	
 			<forward name="failed" path="moduleListeAdherent"/>
+			
 	</action>
 	<action path="/ficheInscription"
 			type="src.ficheInscription.FicheInscriptionLookUpDispatchAction"
@@ -57,9 +58,10 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			input="/jsp/ListeAdherents.jsp"
 			parameter="action"
 			scope="session"> 
-			<forward name="success" path="moduleListeAdherent"/>
+			<forward name="success"	 path="moduleListeAdherent"/>
 			<forward name="failed" path="moduleListeAdherent"/>
 			<forward name="annulerListe"  path="modele"/>
+			<forward name="fiche" path="/creationFiche.do"/>
 	</action>
 </action-mappings>
 

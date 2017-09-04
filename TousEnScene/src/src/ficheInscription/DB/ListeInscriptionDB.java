@@ -17,6 +17,8 @@ public class ListeInscriptionDB {
 	public static void rechercherListeAdherents (ListeAdherentsForm laForm, Connection cnx)
 						throws Exception {
 		ActionErrors err = new ActionErrors () ;
+		ResultSet rs = null ;
+		Statement lecture = null;
 		try {
 			int taillePage = laForm.getChoixTaillePage() ;
 			int pageCourante = laForm.getPageCourante() ;
@@ -25,9 +27,9 @@ public class ListeInscriptionDB {
 			String sql = constituerRequet(laForm) ;
 			int startRow = pageCourante * taillePage ;
 			int lastRow = startRow + taillePage ;
-			Statement lecture = cnx.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+			 lecture = cnx.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 													ResultSet.CONCUR_READ_ONLY) ;
-			ResultSet rs = lecture.executeQuery(sql) ;
+			 rs = lecture.executeQuery(sql) ;
 			rs.absolute(startRow) ;
 			ArrayList<FicheInscriptionForm> listfiForm = new ArrayList<FicheInscriptionForm>();
 			
@@ -36,8 +38,10 @@ public class ListeInscriptionDB {
 				listfiForm.add(fiForm);
 			}
 			laForm.setListeAdherents(listfiForm);
-		} catch (Exception e) {
-			
+		} catch (Exception e) {}
+		finally {
+			rs.close();
+			lecture.close();
 		}
 	}
 	
@@ -62,7 +66,8 @@ public class ListeInscriptionDB {
 	
 	public static FicheInscriptionForm mapperVariables (ResultSet rs) throws Exception {
 		FicheInscriptionForm fiForm = new FicheInscriptionForm();
-		 
+		
+		fiForm.setNumeroInterne(rs.getInt("identifiant"));
 		fiForm.setNomEleve(rs.getString("nomadh").trim());
 		fiForm.setPrenomEleve(rs.getString("pread").trim());
 		DateTime date = new DateTime(rs.getDate("datnaissadh")) ;

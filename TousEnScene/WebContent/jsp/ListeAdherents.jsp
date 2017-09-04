@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,21 +7,25 @@
 <%@ taglib uri="struts-bean"   prefix = "bean"  %>
 <%@ taglib uri="struts-logic"  prefix = "logic" %>
 <%@ taglib uri="struts-nested" prefix = "nested"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <meta http-equiv="Content-style-Type" content="text/css" />
 
 <link rel="stylesheet" type="text/css" 
 	  href="${pageContext.request.contextPath}/css/ficheInscription.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ficheInscription.js"> 
 </script>
 	    	  
-<title> List des adhérents </title>
+<title> List des adhÃ©rents </title>
 </head>
 
 <body>
-	<h1> Liste des adhérents de la saison </h1>
+	<h1> Liste des adhÃ©rents de la saison </h1>
 		
 	<html:form styleId="form" action="/listeAdherentJSP.do">
+	<html:hidden styleId="rangId" name="listeAdherentsForm" property="rang"/>	 
 	
 	<html:errors bundle="erreur"  />	
 	
@@ -48,47 +53,53 @@
 		<bean:message key="annuler"/> 
 	</html:submit>
 	<br>
-	
-<!-- 	Les enregistrements détail -->
+<!-- 	Les enregistrements dÃ©tail -->
 	<fieldset>
 		<legend> <bean:message key="listeadh"/> </legend>
 		<div id="success" class="tableContainer">
 		<table>
 			<thead>
 				<tr class="theadTab">
+					<th class="theadTab"> Sel </th>
 					<th class="theadTab"> <bean:message key="nom"/> </th>
 					<th class="theadTab"> <bean:message key="prenom"/> </th>
 					<th class="theadTab"> <bean:message key="DateNaissance"/> </th>
 					<th class="theadTab"> <bean:message key="adresse"/> </th>
 					<th class="theadTab"> <bean:message key="codePostal"/> </th>
 					<th class="theadTab"> <bean:message key="ville"/> </th>
-					<th class="theadTab"> <bean:message key="classe"/> </th>
-					
+					<th class="theadTab"> <bean:message key="classe"/> </th>					
 			</thead>
 			<tbody>
 				<logic:iterate id="id" name="listeAdherentsForm" property="listeAdherents" indexId="i">
-					<tr class="ligneTab">
-						<td class="colonneTab" title="Accéder au détail" >
-							<strong><bean:write name="id" property="nomEleve"/> </strong>
+					<tr class="ligneTab" id="clicDetail" onclick="selectionAdhrent(3);" >
+						<td> <html:radio name="listeAdherentsForm" property="selRadio" value=""
+										 onclick="selectionAdherent(${id.numeroInterne})" /> 	 		
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail">
+<%-- 						    onclick="action('<c:set target="${listeAdherentsForm}"  --%>
+<!-- 						  							 property="rang"  -->
+<%-- 													 value="${i}" />'); " > --%>
+							 	<strong><bean:write name="id" property="nomEleve"/> </strong>
+							
+						</td>
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail" >
 							<strong><bean:write name="id" property="prenomEleve"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail">
 							<strong> <bean:write name="id" property="dateDeNaissanceEleve"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail">
 							<strong> <bean:write name="id" property="adresse1"/> 
 							 		<bean:write name="id" property="adresse2"/> 
 							</strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail">
 							<strong> <bean:write name="id" property="codePostal"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail">
 							<strong> <bean:write name="id" property="ville"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab" title="AccÃ©der au dÃ©tail">
 							<strong> <bean:write name="id" property="classeScolaire"/> </strong>
 						</td>
 					</tr>
@@ -97,7 +108,7 @@
 		</table>
 		</div>
 	</fieldset>
-<!-- 	Boutons de déplacement et de positionnement -->
+<!-- 	Boutons de dÃ©placement et de positionnement -->
 	<br>
 	<html:select styleId="choixPage" 
 				 name="listeAdherentsForm" property="choixPage">

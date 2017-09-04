@@ -50,6 +50,7 @@
 <!-- 	Numéro Interne de l'éléve -->
 	<span class="labelData150Num"> 
 		<bean:message key="numEleve"/>
+		<bean:write name="ficheInscription" property="numeroInterne"/> 
 	</span>
 	<br>
 <!-- 	----Nom   ------ -->	
