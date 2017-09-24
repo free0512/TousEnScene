@@ -25,5 +25,12 @@
 			<span class="menuGaucheTxt"> Liste des adhérents </span>
 			</html:link>
 		</td>
+		</tr>
+		<tr>
+		<td>
+			<html:link action="/ficheReglement">
+			<span class="menuGaucheTxt"> Fiche de réglement </span>
+			</html:link>
+		</td>
 	</tr>
 </table>

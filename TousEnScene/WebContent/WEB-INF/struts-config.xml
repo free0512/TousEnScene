@@ -35,6 +35,12 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			<forward name="success" path="moduleFiche"/>
 			<forward name="failed" path="moduleFiche"/>
 	</action>
+	<action path="/creationFiche2"
+			name="ficheInscription"
+			type="src.ficheInscription.FicheInscriptionExecute2">
+			<forward name="success" path="moduleFiche"/>
+			<forward name="failed" path="moduleFiche"/>
+	</action>
 	<action path="/listeAdherent"
 			name="listeAdherentsForm"
 			type="src.ficheInscription.ListeInscriptionExecute">
@@ -48,7 +54,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			input = "/jsp/FicheInscription.jsp"
 			parameter="action"
 			scope="session">
-			<forward name="success" path="moduleFiche"/>
+			<forward name="success" path="moduleListeAdherent"/>
 			<forward name="failed" path="moduleFiche"/>
 			<forward name="annulerFiche"  path="modele"/>
 	</action>
@@ -60,8 +66,9 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			scope="session"> 
 			<forward name="success"	 path="moduleListeAdherent"/>
 			<forward name="failed" path="moduleListeAdherent"/>
+			<forward name="listAdh" path="moduleListeAdherent"/>
 			<forward name="annulerListe"  path="modele"/>
-			<forward name="fiche" path="/creationFiche.do"/>
+			<forward name="fiche" path="/creationFiche2.do"/>
 	</action>
 </action-mappings>
 

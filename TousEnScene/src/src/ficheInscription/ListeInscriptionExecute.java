@@ -16,6 +16,7 @@ public class ListeInscriptionExecute extends Action {
 		//return mapping.findForward("success") ;
 		ListeAdherentsForm liForm = (ListeAdherentsForm) form ;
 		liForm.setListeAdherents(null);
+		liForm.setRang(0);
 		ListeInscriptionLookUpDispatchAction li = new ListeInscriptionLookUpDispatchAction();
 		return li.defilement(mapping, form, req, resp);
 	}

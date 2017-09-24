@@ -32,13 +32,13 @@ public class FicheInscriptionForm extends ActionForm {
 	private HashMap sexeRadio, majoriteRadio, atelierRadio, reglementRadio, ouiNonRadio , classRadio;
 	private int  codePostal ;
 	private GregorianCalendar dateDeNaissance ;
-	private String ageEleve ;
+	private String ageEleve , modeAcces ;
 	int statusInsert, numeroInterne ; 
 	
 
-	public void reset (ActionMapping mapping, HttpServletRequest req) {
+	public void reset2 (ActionMapping mapping, HttpServletRequest req) {
 		this.statusInsert = 9 ; //StatusInsert initialisé à 9. car 0-->Création non aboutie, 1-->Création aboutie
-		//this.numeroInterne= 0 ;
+		this.numeroInterne= 0 ;
 		this.nomEleve = null;
 		this.prenomEleve=null;
 		this.classeScolaire=null;
@@ -359,4 +359,14 @@ public class FicheInscriptionForm extends ActionForm {
 	public void setNumeroInterne(int numeroInterne) {
 		this.numeroInterne = numeroInterne;
 	}
+
+	public String getModeAcces() {
+		return modeAcces;
+	}
+
+	public void setModeAcces(String modeAcces) {
+		this.modeAcces = modeAcces;
+	}
+	
+	
 }

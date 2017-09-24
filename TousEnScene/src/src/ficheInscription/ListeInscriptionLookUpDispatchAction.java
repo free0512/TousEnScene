@@ -33,7 +33,7 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 		map.put("zoneList", "defilement");
 	//	map.put("initialiser" , "init");
 		map.put("annuler", "annulerListe");
-		map.put("ouvrirFiche", "ouvrirFicheAdh");
+		map.put("modifier", "ouvrirFicheAdh");
 		return map;
 	}
 
@@ -42,10 +42,18 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			HttpServletRequest request ,
 			HttpServletResponse response ) throws Exception {
 		
+		ActionErrors err = new ActionErrors() ;
 		ListeAdherentsForm laForm = (ListeAdherentsForm) form ;
+		if (laForm.getRang() == 0) {
+			err.add("erreur" , new ActionMessage("selUnAdherent"));
+			addErrors(request, err);
+			return mapping.findForward("failed") ;
+		}
 		FicheInscriptionForm fiForm = new FicheInscriptionForm() ;
+		
 		fiForm.setNumeroInterne(laForm.getRang());
-		FicheInscriptionExecute fi  = new FicheInscriptionExecute();
+		fiForm.setModeAcces("CHG");
+		FicheInscriptionExecute2 fi  = new FicheInscriptionExecute2();
 		ActionForward af = fi.execute(mapping, fiForm, request, response);
 		
 		return mapping.findForward("fiche") ;

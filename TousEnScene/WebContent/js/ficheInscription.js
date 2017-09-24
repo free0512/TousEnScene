@@ -4,14 +4,14 @@ $(document).ready(function() {
 		soumettre("ZoneDeListe");
 	});
 	
-	$(':radio').attr('checked', false);
+	$(':radio.selRadioOpt').attr('checked', false);
 	
 }) ;
 	
 	function selectionAdherent(valeur) {
 		$('#rangId').val(valeur);
-		$('#action').val('ouvrirFichAdherent');
-		$('#form').submit();
+		//$('#action').val('ouvrirFichAdherent');
+		//$('#form').submit();
 	}
 	
 	function soumettre(valeur) { 

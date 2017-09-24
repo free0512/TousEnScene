@@ -73,8 +73,14 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 													cb.getMdp());
 			//DataSource ds =  getDataSource (request , "enidb");
 			//Connection cnx = ds.getConnection() ;
+			FicheInscriptionForm fins = (FicheInscriptionForm) form ;
 			FicheInscriptionBD finsDB = new FicheInscriptionBD() ;
-			return finsDB.insertFicheIns(mapping, connexion, form) ;
+			if (fins.getNumeroInterne()==0) {
+				return finsDB.insertFicheIns(mapping, connexion, form) ;
+						
+			} else {
+			return finsDB.changeFicheIns(mapping, connexion, form) ;
+			}
 			
 		} catch (SQLException e)  
 			{ 
@@ -103,7 +109,7 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 		Date dateDeNaissanceSQL = null ;
 			
 		// Si le numeroInterne est renseigné, on bloque la création afin d'éviter de créer des doublons
-		if (fins.getNumeroInterne() != 0) {
+		if ((fins.getNumeroInterne() != 0) && (fins.getModeAcces()== "CRT")) {
 			err.add("dejaCREE" , new ActionMessage("errors.dejaCree")) ;
 			addErrors(req, err);
 			return false ;

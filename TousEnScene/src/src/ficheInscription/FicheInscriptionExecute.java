@@ -22,14 +22,14 @@ public class FicheInscriptionExecute extends Action {
 	public ActionForward execute (ActionMapping mapping , ActionForm form , 
 								  HttpServletRequest req, HttpServletResponse resp	) throws Exception {
 		
-		
+		HttpSession session = req.getSession(false);
 		FicheInscriptionForm fiForm = (FicheInscriptionForm) form ;
-		if (fiForm.getNumeroInterne() != 0) {
-			return rechercherAdherent(mapping, req ,fiForm) ;
-		} else {
+		fiForm.setModeAcces("CRT");
+		fiForm.reset2(mapping, req);
+		session.setAttribute("ficheInscription", fiForm);
 		return mapping.findForward("success") ;
-		}
-		}
+		
+	}
 	
 	public ActionForward rechercherAdherent(ActionMapping mapping,
 											HttpServletRequest req,
@@ -56,7 +56,7 @@ public class FicheInscriptionExecute extends Action {
 													cb.getMdp());
 			
 			FicheInscriptionBD finsDB = new FicheInscriptionBD() ;
-			FicheInscriptionForm fi = finsDB.lireFicheAdherent(mapping, connexion, fiForm) ;
+			FicheInscriptionForm fi = finsDB.lireFicheAdherent(mapping, req, connexion, fiForm) ;
 			session.setAttribute("ficheInscription", fi);
 			if (fi==null) {
 				err.add("erreur" , new ActionMessage("errchrgData"));

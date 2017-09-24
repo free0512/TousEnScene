@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="struts-html"   prefix = "html"  %>
 <%@ taglib uri="struts-bean"   prefix = "bean"  %>
 <%@ taglib uri="struts-logic"  prefix = "logic" %>
@@ -16,15 +17,17 @@
 	    	  
 <title> fiche Inscription adhérent </title>
 </head>
-
 <body>
-	<h1> Bulletin d'Inscription de la saison  </h1>
-		
+	<span class="ModeAccess">
+		 <bean:message key="${ficheInscription.modeAcces}"/>
+	</span>	  
+	<h1> Bulletin d'Inscription de la saison </h1>
+	
 	<html:form styleId="form" action="/ficheInscription.do">
 	
 	<html:hidden name="ficheInscription" property="numeroInterne"/>
 	<html:hidden name="ficheInscription" property="statusInsert"/>
-	
+		   
 	 <html:errors bundle="erreur"  />	 
 	 
 <!-- 	 Afficher le résultat de l'insertion  -->
@@ -151,8 +154,9 @@
 			<bean:define id="idRadio">
 				<bean:write name="id" property="key"/>
 			</bean:define>
-			<html:radio styleId="flagDC${i}" name="ficheInscription" property="sexeEleve" 
-						value="${idRadio}" > </html:radio>			
+			<html:radio styleId="flagDC${i}" name="ficheInscription" property="sexeEleve" 						
+ 						value="${idRadio}" > 			  						
+			</html:radio>		
 			<bean:write name="id" property="value"/>
 		</logic:iterate>
 		

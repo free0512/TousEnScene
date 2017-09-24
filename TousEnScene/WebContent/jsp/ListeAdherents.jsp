@@ -40,9 +40,8 @@
 	<span class="valueDataLine">
 		<html:text name="listeAdherentsForm" property="choixPrenomEleve"/> 
 	</span>
-	</fieldset>
-	
-<!-- 	Les boutons de recherche -->
+	<br><br>
+	<!-- 	Les boutons de recherche -->
 	<html:submit  styleId="btnvalider" styleClass="bouton" property="action" > 
 		<bean:message key="valider"/> 
 	</html:submit>
@@ -53,14 +52,19 @@
 		<bean:message key="annuler"/> 
 	</html:submit>
 	<br>
+	</fieldset>
+
 <!-- 	Les enregistrements détail -->
 	<fieldset>
 		<legend> <bean:message key="listeadh"/> </legend>
+		<html:submit  styleId="btnvalider" styleClass="bouton" property="action" > 
+		<bean:message key="modifier"/> 
+		</html:submit>
 		<div id="success" class="tableContainer">
 		<table>
 			<thead>
 				<tr class="theadTab">
-					<th class="theadTab"> Sel </th>
+					<th class="theadTab"> <bean:message key="sel"/> </th>
 					<th class="theadTab"> <bean:message key="nom"/> </th>
 					<th class="theadTab"> <bean:message key="prenom"/> </th>
 					<th class="theadTab"> <bean:message key="DateNaissance"/> </th>
@@ -72,34 +76,37 @@
 			<tbody>
 				<logic:iterate id="id" name="listeAdherentsForm" property="listeAdherents" indexId="i">
 					<tr class="ligneTab" id="clicDetail" onclick="selectionAdhrent(3);" >
-						<td> <html:radio name="listeAdherentsForm" property="selRadio" value=""
-										 onclick="selectionAdherent(${id.numeroInterne})" /> 	 		
-						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonnePointer" title="Accéder au détail"> 
+							<html:radio name="listeAdherentsForm" 
+								property="selRadio"  title="Accéder au détail"
+								styleClass ="selRadioOpt"	value=""
+								onclick="selectionAdherent(${id.numeroInterne})" /> 	 		
+						</td> 
+						<td class="colonneTab">
 <%-- 						    onclick="action('<c:set target="${listeAdherentsForm}"  --%>
 <!-- 						  							 property="rang"  -->
 <%-- 													 value="${i}" />'); " > --%>
 							 	<strong><bean:write name="id" property="nomEleve"/> </strong>
 							
 						</td>
-						<td class="colonneTab" title="Accéder au détail" >
+						<td class="colonneTab">
 							<strong><bean:write name="id" property="prenomEleve"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab">
 							<strong> <bean:write name="id" property="dateDeNaissanceEleve"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab">
 							<strong> <bean:write name="id" property="adresse1"/> 
 							 		<bean:write name="id" property="adresse2"/> 
 							</strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab">
 							<strong> <bean:write name="id" property="codePostal"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab">
 							<strong> <bean:write name="id" property="ville"/> </strong>
 						</td>
-						<td class="colonneTab" title="Accéder au détail">
+						<td class="colonneTab">
 							<strong> <bean:write name="id" property="classeScolaire"/> </strong>
 						</td>
 					</tr>
@@ -133,7 +140,7 @@
 	<logic:present name="listeAdherentsForm" property="listeAdherents">
 		<logic:empty name="listeAdherentsForm" property="listeAdherents">
 			<bean:message key="listeVide"/>
-		</logic:empty>
+		</logic:empty> 
 	</logic:present>
 	<html:hidden property="action" styleId="action" value=""/>	
 	</html:form>
