@@ -28,8 +28,8 @@
 		</tr>
 		<tr>
 		<td>
-			<html:link action="/ficheReglement">
-			<span class="menuGaucheTxt"> Fiche de réglement </span>
+			<html:link action="/reglementsFiche">
+			<span class="menuGaucheTxt"> Fiche des réglements </span>
 			</html:link>
 		</td>
 	</tr>

@@ -18,6 +18,12 @@
 		<put name="titre" value="Création d'un adhérent" />
 		<put name="corps" value="/jsp/FicheInscription.jsp"/>
 	</definition>
+	
+	<!-- 		Création de la fiche reglement	 -->
+	<definition name="moduleFicheReg" extends="modele">
+		<put name="titre" value="Création d'un réglement"/>
+		<put name="corps" value="/jsp/FicheReglements.jsp"/>
+	</definition>
 
 <!-- Liste des adhérents -->
 	<definition name="moduleListeAdherent" extends="modele">

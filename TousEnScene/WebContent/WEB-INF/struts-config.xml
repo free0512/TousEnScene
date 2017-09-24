@@ -21,6 +21,8 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	</form-bean>
 	<form-bean name="listeAdherentsForm" type="src.ficheInscription.ListeAdherentsForm">
 	</form-bean>
+	<form-bean name="ficheReglements" type="src.ficheInscription.FicheReglementsForm">
+	</form-bean>
 </form-beans>
 
 <action-mappings>
@@ -69,6 +71,22 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			<forward name="listAdh" path="moduleListeAdherent"/>
 			<forward name="annulerListe"  path="modele"/>
 			<forward name="fiche" path="/creationFiche2.do"/>
+	</action>
+	<action path="/reglementsFiche"
+			name="ficheReglements"
+			type="src.ficheInscription.FicheReglementsExecute">
+			<forward name="success" path="moduleFicheReg"/>
+			<forward name="failed" path="moduleFicheReg"/>
+	</action>
+	<action path="/ficheReglementsJSP"
+			type="src.ficheInscription.FicheReglementsAction"
+			name="ficheReglements"
+			input = "/jsp/FicheReglements.jsp"
+			parameter="action"
+			scope="session">
+			<forward name="success" path="moduleListeAdherent"/>
+			<forward name="failed" path="moduleFicheReg"/>
+			<forward name="annulerFiche"  path="moduleFicheReg"/>
 	</action>
 </action-mappings>
 

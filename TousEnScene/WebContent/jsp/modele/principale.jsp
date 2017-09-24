@@ -28,7 +28,7 @@
 				<tiles:insert attribute="menugauche"/>
 			</td> 
 <!-- 			<td style="width:2%"> col2 </td> -->
-			<td colspan="2" style="border:2px solid black; witdh:80%">
+			<td colspan="2" style="border:2px solid black; witdh:80%; vertical-align:top;">
 				<tiles:insert attribute="corps"/>
 			</td>
 			<td style="border:2px solid black; width:10%"> 

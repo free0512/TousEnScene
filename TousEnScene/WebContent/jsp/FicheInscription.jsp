@@ -43,7 +43,7 @@
 			<span class="vert">
 				<bean:message key="numInterne"/>
  				<bean:write name="ficheInscription" property="numeroInterne"/> 
-			</span>
+			</span> 
 		</logic:notEqual>
 	</logic:equal>
 	

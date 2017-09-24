@@ -114,9 +114,8 @@
 			</tbody>
 		</table>
 		</div>
-	</fieldset>
+	
 <!-- 	Boutons de déplacement et de positionnement -->
-	<br>
 	<html:select styleId="choixPage" 
 				 name="listeAdherentsForm" property="choixPage">
 		<logic:present name="listeAdherentsForm" property="listePages">		 
@@ -142,6 +141,9 @@
 			<bean:message key="listeVide"/>
 		</logic:empty> 
 	</logic:present>
+	
+	</fieldset>
+	
 	<html:hidden property="action" styleId="action" value=""/>	
 	</html:form>
 	
