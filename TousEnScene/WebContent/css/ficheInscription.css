@@ -157,5 +157,7 @@ table {
 	cursor: pointer;
 }
 
-
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
 

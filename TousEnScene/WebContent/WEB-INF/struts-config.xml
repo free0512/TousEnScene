@@ -21,9 +21,16 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	</form-bean>
 	<form-bean name="listeAdherentsForm" type="src.ficheInscription.ListeAdherentsForm">
 	</form-bean>
-	<form-bean name="ficheReglements" type="src.ficheInscription.FicheReglementsForm">
+	<form-bean name="selectionAdherentsForm" type="src.ficheInscription.SelectionAdherentsForm">
+	</form-bean>
+	<form-bean name="ficheReglementsForm" type="src.ficheInscription.FicheReglementsForm">
 	</form-bean>
 </form-beans>
+
+<!-- <global-forwards> -->
+<!-- 	<forward name="selectionAdherents" path="src.ficheInscription.SelectionAdherentsExecute"> -->
+<!-- 	</forward> -->
+<!-- </global-forwards> -->
 
 <action-mappings>
 	<action path="/initialisation"
@@ -72,21 +79,37 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			<forward name="annulerListe"  path="modele"/>
 			<forward name="fiche" path="/creationFiche2.do"/>
 	</action>
+	<action path="/selectionAdherents"
+			name="selectionAdherentsForm"
+			input="/jsp/SelectionAdherents.jsp"
+			type="src.ficheInscription.SelectionAdherentsExecute">
+<!-- 			<forward name="success" path="/selectionAdherentJSP.do"/> -->
+	</action>
+	
+	<action path="/selectionAdherentJSP"
+			type="src.ficheInscription.SelectionAdherentLookUpDispatchAction"
+			name="selectionAdherentsForm"
+			input="/jsp/SelectionAdherents.jsp"
+			parameter="action"
+			scope="session"> 
+			<forward name="success"	 path="/reglementsFiche.do"/>
+			<forward name="failed" path="moduleFicheReg"/>
+	</action>
 	<action path="/reglementsFiche"
-			name="ficheReglements"
-			type="src.ficheInscription.FicheReglementsExecute">
+			name="ficheReglementsForm"
+			type="src.ficheInscription.FicheReglementsExecute"
+			scope="session">
 			<forward name="success" path="moduleFicheReg"/>
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>
 	<action path="/ficheReglementsJSP"
-			type="src.ficheInscription.FicheReglementsAction"
-			name="ficheReglements"
+			type="src.ficheInscription.FicheReglementsLookUpDispatchAction"
+			name="ficheReglementsForm"
 			input = "/jsp/FicheReglements.jsp"
 			parameter="action"
 			scope="session">
-			<forward name="success" path="moduleListeAdherent"/>
-			<forward name="failed" path="moduleFicheReg"/>
-			<forward name="annulerFiche"  path="moduleFicheReg"/>
+<!--    			<forward name="selectionAdherentFwd" path="/selectionAdherentJSP.do"/>    -->
+ 	 		<forward name="selectionAdherentFwd" path="/selectionAdherents.do"/>   
 	</action>
 </action-mappings>
 

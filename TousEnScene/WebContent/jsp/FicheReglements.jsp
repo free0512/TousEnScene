@@ -29,20 +29,39 @@
 	<html:form styleId="form" action="/ficheReglementsJSP.do">
 
 	<fieldset>
-	<legend> <bean:message key="selAdhrent"/>  </legend>
+	<legend> <bean:message key="cadreSelAdhrent"/>  </legend>
+<!-- 	Sélection d'un adhérent -->
+
 	<!-- 	----Nom   ------ -->	
 	<span class="labelData150"> <bean:message key="nom" /> </span>
 	<span class="valueData"> 
-	 	<html:text name="ficheReglements" property="nom"/> 	
+	 	<html:text name="ficheReglementsForm" property="nom" disabled="true" /> 	
 	</span>
 	<!-- 	----Prénom ----- -->
 	<span class="labelData150"> <bean:message key="prenom"/> </span>
 	<span class="valueData"> 
-		<html:text name="ficheReglements" property="prenom"/>  
+		<html:text name="ficheReglementsForm" property="prenom"  disabled="true"/>
+		<logic:notEqual name="ficheReglementsForm" property="numeroAdherent" value="0">
+			n° <bean:write name="ficheReglementsForm" property="numeroAdherent"/>
+		</logic:notEqual>
 	</span>	
-	<html:submit styleClass="bouton" property="action">
-		<bean:message key="selAdhrent"/>
-	</html:submit>
+
+		<html:submit styleClass="bouton" property="action"> 
+			<bean:message key="selAdhrent"/>
+		</html:submit>
+<!-- 		---- Age --------- -->
+	<br>
+	<span class="labelData150"> <bean:message key ="age"/> </span>
+	<span class="valueData">
+		<html:text name="ficheReglementsForm" property="ageEleve" disabled="true"/>
+	</span>
+<!-- 	------- Atelier ---------- -->
+	<br>
+	<span class="labelData150"> <bean:message key="atelier2"/> </span>
+	<span class="valueData">
+		<html:text name="ficheReglementsForm" property="atelierEleve" disabled="true"/>
+	</span>		
+
 	</fieldset>
 	<br>
 	<fieldset>
@@ -50,17 +69,25 @@
 		<br>
 		<span class="labelData150"> <bean:message key="modReg"/> </span>
 		<span class="valueData"> 
-			<html:text name="ficheReglements" property="modeReglement" 
+			<html:text name="ficheReglementsForm" property="modeReglement" 
 						maxlength="2" size="2"/>  
 		</span>
 		<br> <br>
 		<span class="labelData150"> <bean:message key="desc"/> </span>
 		<span class="valueData"> 
-			<html:text name="ficheReglements" property="description"/>
+			<html:text name="ficheReglementsForm" property="description"/>
 		</span>
 		
 	</fieldset>
-	</html:form>	 
+	<br>
+		<html:submit styleClass="bouton" property="action"> 
+			<bean:message key="initialiser"/>
+		</html:submit>
+	</html:form>
+	
+<!-- 	<div id= "popupListAdherent"> -->
+<%-- 		<%@ include file="./SelectionAdherents.jsp" %> --%>
+<!-- 	</div>	  -->
 
 </body>
 </html>
