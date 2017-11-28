@@ -23,7 +23,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	</form-bean>
 	<form-bean name="selectionAdherentsForm" type="src.ficheInscription.SelectionAdherentsForm">
 	</form-bean>
-	<form-bean name="ficheReglementsForm" type="src.ficheInscription.FicheReglementsForm">
+	<form-bean name="listeReglementsForm" type="src.ficheInscription.ListeReglementsForm">
 	</form-bean>
 </form-beans>
 
@@ -96,19 +96,20 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>
 	<action path="/reglementsFiche"
-			name="ficheReglementsForm"
-			type="src.ficheInscription.FicheReglementsExecute"
+			name="listeReglementsForm"
+			type="src.ficheInscription.ListeReglementsExecute"
 			scope="session">
 			<forward name="success" path="moduleFicheReg"/>
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>
 	<action path="/ficheReglementsJSP"
-			type="src.ficheInscription.FicheReglementsLookUpDispatchAction"
-			name="ficheReglementsForm"
-			input = "/jsp/FicheReglements.jsp"
+			type="src.ficheInscription.ListeReglementsLookUpDispatchAction"
+			name="listeReglementsForm"
+			input = "/jsp/ListeReglements.jsp"
 			parameter="action"
 			scope="session">
 <!--    			<forward name="selectionAdherentFwd" path="/selectionAdherentJSP.do"/>    -->
+			<forward name="success" path="moduleFicheReg"/>
  	 		<forward name="selectionAdherentFwd" path="/selectionAdherents.do"/>   
 	</action>
 </action-mappings>

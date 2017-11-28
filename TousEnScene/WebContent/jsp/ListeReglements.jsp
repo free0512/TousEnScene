@@ -35,14 +35,14 @@
 	<!-- 	----Nom   ------ -->	
 	<span class="labelData150"> <bean:message key="nom" /> </span>
 	<span class="valueData"> 
-	 	<html:text name="ficheReglementsForm" property="nom" disabled="true" /> 	
+	 	<html:text name="listeReglementsForm" property="nom" disabled="true" /> 	
 	</span>
 	<!-- 	----Prénom ----- -->
 	<span class="labelData150"> <bean:message key="prenom"/> </span>
 	<span class="valueData"> 
-		<html:text name="ficheReglementsForm" property="prenom"  disabled="true"/>
-		<logic:notEqual name="ficheReglementsForm" property="numeroAdherent" value="0">
-			n° <bean:write name="ficheReglementsForm" property="numeroAdherent"/>
+		<html:text name="listeReglementsForm" property="prenom"  disabled="true"/>
+		<logic:notEqual name="listeReglementsForm" property="numeroAdherent" value="0">
+			n° <bean:write name="listeReglementsForm" property="numeroAdherent"/>
 		</logic:notEqual>
 	</span>	
 
@@ -53,31 +53,39 @@
 	<br>
 	<span class="labelData150"> <bean:message key ="age"/> </span>
 	<span class="valueData">
-		<html:text name="ficheReglementsForm" property="ageEleve" disabled="true"/>
+		<html:text name="listeReglementsForm" property="ageEleve" disabled="true"/>
 	</span>
 <!-- 	------- Atelier ---------- -->
 	<br>
 	<span class="labelData150"> <bean:message key="atelier2"/> </span>
 	<span class="valueData">
-		<html:text name="ficheReglementsForm" property="atelierEleve" disabled="true"/>
-	</span>		
+		<html:text name="listeReglementsForm" property="atelierEleveDesc" 
+				   maxlength="50" size="50" disabled="true"/>
+	</span>
+<!-- 	------- Mode réglement ---------- --> 
+	<br>
+	<span class="labelData150"> <bean:message key="modReg"/> </span>
+	<span class="valueData">
+		<html:text name="listeReglementsForm" property="reglementEleveDesc" 
+				   maxlength="50" size="50" disabled="true"/>
+	</span>			
 
 	</fieldset>
 	<br>
 	<fieldset>
 		<legend> <bean:message key="legendeReg"/> </legend>
 		<br>
-		<span class="labelData150"> <bean:message key="modReg"/> </span>
-		<span class="valueData"> 
-			<html:text name="ficheReglementsForm" property="modeReglement" 
-						maxlength="2" size="2"/>  
-		</span>
-		<br> <br>
-		<span class="labelData150"> <bean:message key="desc"/> </span>
-		<span class="valueData"> 
-			<html:text name="ficheReglementsForm" property="description"/>
-		</span>
-		
+		<table>
+		<thead>
+			<tr class="theadTab">
+				<th class="theadTab"> <bean:message key="modReg"/> </th>
+				<th class="theadTab"> <bean:message key="desc"/> </th>
+				<th class="theadTab"> <bean:message key="dateReg"/> </th>
+				<th class="theadTab"> <bean:message key="montantReg"/> </th>
+			</tr>
+		</thead>
+		</table>		
+		<html:text property=""></html:text>
 	</fieldset>
 	<br>
 		<html:submit styleClass="bouton" property="action"> 

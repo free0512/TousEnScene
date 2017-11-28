@@ -22,7 +22,7 @@
 	<!-- 		Création de la fiche reglement	 -->
 	<definition name="moduleFicheReg" extends="modele">
 		<put name="titre" value="Création d'un réglement"/>
-		<put name="corps" value="/jsp/FicheReglements.jsp"/>
+		<put name="corps" value="/jsp/ListeReglements.jsp"/>
 	</definition>
 
 <!-- Liste des adhérents -->

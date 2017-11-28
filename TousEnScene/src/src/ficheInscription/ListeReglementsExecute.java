@@ -9,7 +9,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class FicheReglementsExecute extends Action{
+public class ListeReglementsExecute extends Action{
 	
 	public ActionForward execute (ActionMapping mapping ,
 								  ActionForm form,
@@ -21,11 +21,13 @@ public class FicheReglementsExecute extends Action{
 		if (laForm == null) {
 			laForm = new SelectionAdherentsForm() ;}
 		else {
-		FicheReglementsForm frForm = (FicheReglementsForm) form ;
+		ListeReglementsForm frForm = (ListeReglementsForm) form ;
 		frForm.setNom(laForm.getNomEleveChoisi());
 		frForm.setPrenom(laForm.getPrenomEleveChoisi());
 		frForm.setNumeroAdherent(laForm.getRang());
 		frForm.setAgeEleve(laForm.getAgeEleve());
+		frForm.setAtelierEleve(laForm.getAtelierEleve());
+		frForm.setReglementEleve(laForm.getReglementEleve());
 		}
 		return mapping.findForward("success") ;
 	}	

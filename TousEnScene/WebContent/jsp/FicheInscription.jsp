@@ -109,7 +109,7 @@
 	</span>
 	<span class="labelDataLineAge"> <bean:message key="age"/> </span>
 	<span class="valueDataLineAge">
-	<html:text name="ficheInscription" property="ageEleve" size="4" disabled="true"/>
+	<html:text name="ficheInscription" property="ageEleve" maxlength="2" size="2" disabled="true"/>
 	<bean:message key="ans"/>
 	</span>
 	<br>

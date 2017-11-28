@@ -28,14 +28,14 @@
 	display: inline-block;
 /* 	border : 2px solid black ; */
 	width : 150px;
-	left : 700px;
+	left : 650px;
     position : absolute;
 }
 .labelDataLineAge {
 	display: inline-block;
 /* 	border : 2px solid black ; */
 	width : 10px;
-	left : 1000px;
+	left : 960px;
     position : absolute;
 }
 .labelData800{
@@ -68,12 +68,12 @@
 }
 .valueDataLine {
 	width : 500px;
-	left : 850px;
+	left : 800px;
 	position : absolute;
 }
 .valueDataLineAge {
 	width : 500px;
-	left : 1050px;
+	left : 1000px;
 	position : absolute;
 }
 #ErrRed {
