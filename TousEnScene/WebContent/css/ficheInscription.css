@@ -129,7 +129,7 @@
 }
 table {
 	width: 100%;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
     border-collapse: collapse;
     align : left;
 }
@@ -139,6 +139,13 @@ table {
     align : left;
     font-size: 15px;
 }
+.colonneTabReg {
+	border: 1px solid black;
+    border-collapse: collapse;
+    align : left;
+    font-size: 15px;
+    width : 300px;
+}
 .theadTab {
 	border: 1px solid black;
     border-collapse: collapse;
@@ -146,6 +153,15 @@ table {
     background-color: #f1f1c1;
     font-size: 12px;
     font-weight: bold;
+}
+.theadTabReg {
+	border: 1px solid black;
+    border-collapse: collapse;
+    text-align : center;
+    background-color: #c0c0c0;
+    font-size: 15px;
+    font-weight: bold;
+    width : 300px;
 }
 .tableContainer{
 	margin: 40px auto;

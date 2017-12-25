@@ -26,7 +26,7 @@
 	</span>	  
 	<h1> Fiche de réglement de l'adhérent </h1>
 	 <html:errors bundle="erreur"  />
-	<html:form styleId="form" action="/ficheReglementsJSP.do">
+	<html:form styleId="form" action="/listeReglementsJSP.do">
 
 	<fieldset>
 	<legend> <bean:message key="cadreSelAdhrent"/>  </legend>
@@ -71,31 +71,50 @@
 	</span>			
 
 	</fieldset>
-	<br>
-	<fieldset>
-		<legend> <bean:message key="legendeReg"/> </legend>
-		<br>
+ 
+		<h3> <bean:message key="legendeReg"/> </h3>
+		
 		<table>
 		<thead>
-			<tr class="theadTab">
-				<th class="theadTab"> <bean:message key="modReg"/> </th>
-				<th class="theadTab"> <bean:message key="desc"/> </th>
-				<th class="theadTab"> <bean:message key="dateReg"/> </th>
-				<th class="theadTab"> <bean:message key="montantReg"/> </th>
+			<tr class="theadTabReg">
+				<th class="theadTabReg"> <bean:message key="modReg"/> </th>
+				<th class="theadTabReg"> <bean:message key="desc"/> </th>
+				<th class="theadTabReg"> <bean:message key="dateReg"/> </th>
+				<th class="theadTabReg"> <bean:message key="montantReg"/> </th>
 			</tr>
 		</thead>
 		</table>		
-		<html:text property=""></html:text>
-	</fieldset>
-	<br>
-		<html:submit styleClass="bouton" property="action"> 
-			<bean:message key="initialiser"/>
-		</html:submit>
-	</html:form>
+		
+		<!-- 	Boutons de déplacement et de positionnement -->
 	
-<!-- 	<div id= "popupListAdherent"> -->
-<%-- 		<%@ include file="./SelectionAdherents.jsp" %> --%>
-<!-- 	</div>	  -->
-
+		<logic:present name="listeReglementsForm" property="listePages">		
+		<html:select styleId="choixPage" 
+				 name="listeReglementsForm" property="choixPage"> 
+			<html:optionsCollection name="listeReglementsForm" property="listePages"
+ 									label="label" value="value"/>   
+ 		</html:select>
+		</logic:present>
+	
+	<logic:equal   name="listeReglementsForm" property="suivant" value="true">
+		<html:submit  styleId="BtnSuivant" styleClass="bouton" property="action">
+			<bean:message key="suivant"/>
+		</html:submit>
+	</logic:equal>
+	
+	<logic:equal name="listeReglementsForm" property="precedent" value="true">
+		<html:submit styleId="BtnPrecedent" styleClass="bouton" property="action">
+			<bean:message key="precedent"/>
+		</html:submit>
+	</logic:equal>
+	
+	<logic:present name="listeReglementsForm" property="listeReglement">
+		<logic:empty name="listeReglementsForm" property="listeReglement">
+			<bean:message key="listeVide"/>
+		</logic:empty> 
+	</logic:present>
+	
+	<br>
+		
+	</html:form>
 </body>
 </html>

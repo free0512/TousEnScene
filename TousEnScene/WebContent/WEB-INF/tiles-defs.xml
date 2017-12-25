@@ -10,6 +10,7 @@
 		<put name="enteteText" value="/jsp/modele/enteteText.jsp"/> 
 		<put name="menugauche" value="/jsp/modele/menugauche.jsp"/>
 		<put name="corps" value="/jsp/modele/corps.jsp"/>
+		<put name="corps2" value=""/>
 		<put name="pieds" value="/jsp/modele/pieds.jsp"/>
 	</definition>
 
@@ -23,7 +24,8 @@
 	<definition name="moduleFicheReg" extends="modele">
 		<put name="titre" value="Création d'un réglement"/>
 		<put name="corps" value="/jsp/ListeReglements.jsp"/>
-	</definition>
+ 		<put name="corps2" value="/jsp/FicheReglements.jsp"/> 
+ 	</definition>
 
 <!-- Liste des adhérents -->
 	<definition name="moduleListeAdherent" extends="modele">

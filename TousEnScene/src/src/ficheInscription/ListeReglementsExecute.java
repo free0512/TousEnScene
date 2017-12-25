@@ -29,6 +29,7 @@ public class ListeReglementsExecute extends Action{
 		frForm.setAtelierEleve(laForm.getAtelierEleve());
 		frForm.setReglementEleve(laForm.getReglementEleve());
 		}
-		return mapping.findForward("success") ;
+		ListeReglementsLookUpDispatchAction li = new ListeReglementsLookUpDispatchAction();
+		return li.defilement(mapping, form, req, resp);
 	}	
 }

@@ -12,7 +12,7 @@
 	  href="${pageContext.request.contextPath}/css/demo.css"/>
 </head>
 <body>
-	<table style="width:100%; height:600px">
+	<table style="border:2px solid black; width:100%; height:100%">
 <!-- 		 1er ligne  couleur de fond rouge brique--> 
 		<tr style="background-color:#C9103B; height:10%">
 			<td colspan="1" style=" width:10%" >
@@ -22,27 +22,30 @@
 				<tiles:insert attribute="enteteText"/>
 			</td>
 		</tr>		
-<!-- 		 Page Principale  Corps  -->
-		<tr style="border:2px solid black; height:85%">
-			<td style="border:2px solid black; width:160px"> 
+<!-- 		 Page Principale  Corps   -->
+		<tr style="height:75%">
+			<td rowspan="2" style="border:2px solid black; width:10%"> 
 				<tiles:insert attribute="menugauche"/>
 			</td> 
-<!-- 			<td style="width:2%"> col2 </td> -->
-			<td colspan="2" style="border:2px solid black; witdh:80%; vertical-align:top;">
+			<td colspan="2" style="witdh:80%; 
+				vertical-align:top;">
 				<tiles:insert attribute="corps"/>
 			</td>
-			<td style="border:2px solid black; width:10%"> 
-			
+			<td rowspan="2" style="border:2px solid black; width:10%"> 
 			</td>
 		</tr>
-		
-<!-- 		 3eme ligne -->
-		<tr  style="border:2px solid black; height:5%" >
-			<td colspan="4">
+<!-- Corps2 -->
+		<tr style="height:10%">
+			<td  style="witdh:80%; vertical-align:top;">
+				<tiles:insert attribute="corps2"/>
+			</td>	
+		</tr>
+<!-- 		 pieds de page    -->
+		<tr  style="border:2px solid black; height:05%" >
+			<td colspan="4"> 
 				<tiles:insert attribute="pieds"/>
 			</td>
 		</tr>
-		
 	</table> 
 </body>
 </html>

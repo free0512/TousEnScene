@@ -1,9 +1,15 @@
 package src.ficheInscription;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+
+import src.utils.Page;
+import src.utils.Pageable;
 
 public class ListeReglementsForm extends ActionForm {
 
@@ -16,8 +22,9 @@ public class ListeReglementsForm extends ActionForm {
 	private int id_reglements ; 
 	private String modeReglement ;
 	private String description, ageEleve, atelierEleve, atelierEleveDesc, reglementEleve, reglementEleveDesc ;
-	 
-	
+	private ArrayList<FicheReglementsForm> listeReglement = null ;
+	private Pageable<FicheReglementsForm> pageable = new Pageable<FicheReglementsForm>(null);
+		
 	public void reset (ActionMapping mapping, HttpServletRequest req) {
 		this.nom = null ;
 		this.prenom= null ;
@@ -32,6 +39,49 @@ public class ListeReglementsForm extends ActionForm {
 		this.description= null ;
 	}
 		
+	public boolean isSuivant() {
+		return this.pageable.hasNextPage() ;
+	}
+	public boolean isPrecedent() {
+		return this.pageable.hasPreviousPage() ;
+	}
+	public int getchoixPage() {
+		return this.pageable.getPage() ;
+	}
+	public void setchoixPage(int page) {
+		this.pageable.setPage(page);
+	}
+	public int getTaillePage () {
+		return this.pageable.getPageSize();
+	}
+	public void setTaillePage (int taillePage){
+		this.pageable.setPageSize(taillePage);
+	}
+	public List<Page> getListePage() {
+		return this.pageable.getListePages();
+	}
+	public int getPageCourante() {
+		return this.pageable.getPage() ;
+	}
+	public void setPageCourante(int pageCourante) {
+		this.pageable.setPage(pageCourante);
+	}
+
+	public List<FicheReglementsForm> getListeReglements() {
+		return (this.pageable.getListForPage().size()>0 && this.pageable.getPageSize()>0)
+				?this.pageable.getListForPage():null;		
+	}
+	public void setListeReglements(ArrayList<FicheReglementsForm> listReg) {
+		this.listeReglement = listReg ;
+		if (this.pageable == null) {
+			this.pageable = new Pageable<FicheReglementsForm>(this.listeReglement);
+		} else {
+			this.pageable.setList(this.listeReglement);
+		}
+		this.pageable.setPage(1);
+	}
+	
+	
 	public String getReglementEleve() {
 		return reglementEleve;
 	}
