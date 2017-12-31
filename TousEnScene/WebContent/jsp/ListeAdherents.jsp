@@ -27,7 +27,7 @@
 	<html:form styleId="form" action="/listeAdherentJSP.do">
 	<html:hidden styleId="rangId" name="listeAdherentsForm" property="rang"/>	 
 	
-	<html:errors bundle="erreur"  />	
+	<html:errors bundle ="erreur"  />	
 	
 	<fieldset>
 	<legend> <bean:message key="rechecheEleve"/>  </legend>
