@@ -55,9 +55,9 @@ public class ListeInscriptionDB {
 		}
 		if (!prenom.isEmpty()) {
 			if (whereCond.isEmpty()) {
-			whereCond += "where upper(pread) like '%" + prenom +"%'" ;	
+			whereCond += "where upper(preadh) like '%" + prenom +"%'" ;	
 			} else {
-			whereCond += "and upper(pread) like '%" + prenom +"%'" ;
+			whereCond += "and upper(preadh) like '%" + prenom +"%'" ;
 			}
 		}	
 		sql += whereCond + " order by nomadh" ;
@@ -69,7 +69,7 @@ public class ListeInscriptionDB {
 		
 		fiForm.setNumeroInterne(rs.getInt("identifiant"));
 		fiForm.setNomEleve(rs.getString("nomadh").trim());
-		fiForm.setPrenomEleve(rs.getString("pread").trim());
+		fiForm.setPrenomEleve(rs.getString("preadh").trim());
 		DateTime date = new DateTime(rs.getDate("datnaissadh")) ;
 		String dateAlpha = String.valueOf(date.dayOfMonth().get()) +'/'+
 						   String.valueOf(date.monthOfYear().get())+'/'+

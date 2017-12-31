@@ -30,7 +30,7 @@ public class FicheInscriptionBD {
 		PreparedStatement st = null ;
 		//Statement st = null ;
 		ResultSet rs2 = null ;
-		String reqSQL = "insert into adherents (nomadh,    pread,   datnaissadh, adresse1, "
+		String reqSQL = "insert into adherents (nomadh,    preadh,   datnaissadh, adresse1, "
 				+ "adresse2, codpostal, ville,   sexadh,   majadh,  atladh,      regadh,"
 				+ "nompere,  prenpere,  nommere, prenmere, telpere, telmere,     emailpere, emailmere,"
 				+ "autadh,   autnom,    phoadh, clasadh )"
@@ -101,7 +101,7 @@ public class FicheInscriptionBD {
 		PreparedStatement st = null ;
 
 		//ResultSet rs2 = null ;
-		String reqSQL = "update adherents set nomadh = ?, pread=?, datnaissadh=?, adresse1=?, " 
+		String reqSQL = "update adherents set nomadh = ?, preadh=?, datnaissadh=?, adresse1=?, " 
 		+ " adresse2=?, codpostal=?, ville=?,   sexadh=?,   majadh=?,  atladh=?, regadh=?,"
 		+ " nompere=?,  prenpere=?,  nommere=?, prenmere=?, telpere=?, telmere=?, emailpere=?, emailmere=?,"
 		+ " autadh=?,   autnom=?,    phoadh=?, clasadh=?  " 
@@ -168,7 +168,7 @@ public class FicheInscriptionBD {
 			rs = st.executeQuery(reqSQL) ;
 			while (rs.next()) {
 				form.setNomEleve(rs.getString("nomadh").trim());
-				form.setPrenomEleve(rs.getString("pread").trim());
+				form.setPrenomEleve(rs.getString("preadh").trim());
 				form.setClasseScolaire(rs.getString("clasadh").trim());
 				form.setAdresse1(rs.getString("adresse1").trim());
 				form.setAdresse2(rs.getString("adresse2").trim());

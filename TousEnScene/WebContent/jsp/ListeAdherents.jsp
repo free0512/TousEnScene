@@ -75,7 +75,7 @@
 			</thead>
 			<tbody>
 				<logic:iterate id="id" name="listeAdherentsForm" property="listeAdherents" indexId="i">
-					<tr class="ligneTab" id="clicDetail" onclick="selectionAdhrent(3);" >
+					<tr class="ligneTab">
 						<td class="colonnePointer" title="Accéder au détail"> 
 							<html:radio name="listeAdherentsForm" 
 								property="selRadio"  title="Accéder au détail"
