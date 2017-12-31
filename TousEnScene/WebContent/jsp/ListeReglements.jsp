@@ -25,7 +25,7 @@
 <%-- 		 <bean:message key="${ficheInscription.modeAcces}"/> --%>
 	</span>	  
 	<h1> Fiche de réglement de l'adhérent </h1>
-	 <html:errors bundle="erreur"  />
+<%-- 	 <html:errors bundle="erreur"/> --%>
 	<html:form styleId="form" action="/listeReglementsJSP.do">
 
 	<fieldset>

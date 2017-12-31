@@ -23,9 +23,9 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	</form-bean>
 	<form-bean name="selectionAdherentsForm" type="src.ficheInscription.SelectionAdherentsForm">
 	</form-bean>
-	<form-bean name="listeReglementsForm" type="src.ficheInscription.ListeReglementsForm">
+	<form-bean name="listeReglementsForm" type="src.ficheReglement.ListeReglementsForm">
 	</form-bean>
-	<form-bean name="ficheReglementsForm" type="src.ficheInscription.FicheReglementsForm">
+	<form-bean name="ficheReglementsForm" type="src.ficheReglement.FicheReglementsForm">
 	</form-bean>
 </form-beans>
 
@@ -49,7 +49,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	<action path="/creationFiche2"
 			name="ficheInscription"
 			type="src.ficheInscription.FicheInscriptionExecute2">
-			<forward name="success" path="moduleFiche"/>
+			<forward name="success" 	path="moduleFiche"/>
 			<forward name="failed" path="moduleFiche"/>
 	</action>
 	<action path="/listeAdherent"
@@ -99,13 +99,13 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	</action>
 	<action path="/listeReglements"
 			name="listeReglementsForm"
-			type="src.ficheInscription.ListeReglementsExecute"
+			type="src.ficheReglement.ListeReglementsExecute"
 			scope="session">
 			<forward name="success" path="moduleFicheReg"/>
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>
 	<action path="/listeReglementsJSP"
-			type="src.ficheInscription.ListeReglementsLookUpDispatchAction"
+			type="src.ficheReglement.ListeReglementsLookUpDispatchAction"
 			name="listeReglementsForm"
 			input = "/jsp/ListeReglements.jsp"
 			parameter="action"
@@ -117,8 +117,9 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	
 	<action path="/ficheReglementSaisie"
 			name="ficheReglementsForm"
-			type="src.ficheInscription.FicheReglementsExexute"
-			scope="session">
+			type="src.ficheReglement.FicheReglementLookUpDispatchAction"
+			scope="session"
+			parameter="action">
 			<forward name="success" path="moduleFicheReg"/>
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>

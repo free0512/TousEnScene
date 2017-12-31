@@ -1,4 +1,4 @@
-package src.ficheInscription;
+package src.ficheReglement;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +8,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import src.ficheInscription.SelectionAdherentsForm;
 
 public class ListeReglementsExecute extends Action{
 	

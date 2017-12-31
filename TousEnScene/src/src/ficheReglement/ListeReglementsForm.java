@@ -1,4 +1,4 @@
-package src.ficheInscription;
+package src.ficheReglement;
 
 import java.util.ArrayList;
 import java.util.List;

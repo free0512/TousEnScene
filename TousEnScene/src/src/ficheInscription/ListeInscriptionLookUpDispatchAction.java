@@ -19,7 +19,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.LookupDispatchAction;
 
 import src.ficheInscription.DB.ListeInscriptionDB;
-import src.ficheInscription.DB.ListeReglementsDB;
+import src.ficheReglementDB.ListeReglementsDB;
 import src.system.ConnextionBean;
 
 public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{

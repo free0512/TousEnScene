@@ -1,4 +1,4 @@
-package src.ficheInscription.DB;
+package src.ficheReglementDB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,8 +9,8 @@ import org.apache.struts.action.ActionErrors;
 import org.joda.time.DateTime;
 
 import src.ficheInscription.FicheInscriptionForm;
-import src.ficheInscription.FicheReglementsForm;
-import src.ficheInscription.ListeReglementsForm;
+import src.ficheReglement.FicheReglementsForm;
+import src.ficheReglement.ListeReglementsForm;
 
 public class ListeReglementsDB {
 
@@ -49,8 +49,8 @@ public class ListeReglementsDB {
 		String sql = "select * from reglement " ;
 		String whereCond = "";
 		int numeroAdh= laForm.getNumeroAdherent() ;
-		whereCond += "where id_adherent = " + numeroAdh ; 	
-		sql += whereCond + " order by date_reglement" ;
+		whereCond += "where identifiant = " + numeroAdh ; 	
+		sql += whereCond + " order by datereglement" ;
 		return sql ;
 	}
 	
@@ -59,7 +59,7 @@ public class ListeReglementsDB {
 		
 	//	fiForm.set setNumeroInterne(rs.getInt("id_reglement"));
 		fiForm.setModeReglement(rs.getString("modepaiement").trim());
-		fiForm.setDescription(rs.getString("Description").trim());
+		fiForm.setDescription(rs.getString("description").trim());
 		DateTime date = new DateTime(rs.getDate("datereglement")) ;
 		String dateAlpha = String.valueOf(date.dayOfMonth().get()) +'/'+
 						   String.valueOf(date.monthOfYear().get())+'/'+
