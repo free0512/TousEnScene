@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -22,10 +23,17 @@ public class ListeReglementsForm extends ActionForm {
 	private int id_reglements ; 
 	private String modeReglement ;
 	private String description, ageEleve, atelierEleve, atelierEleveDesc, reglementEleve, reglementEleveDesc ;
-	private ArrayList<FicheReglementsForm> listeReglement = null ;
+	private List<FicheReglementsForm> listeReglements = null ;
 	private Pageable<FicheReglementsForm> pageable = new Pageable<FicheReglementsForm>(null);
 		
 	public void reset (ActionMapping mapping, HttpServletRequest req) {
+		HttpSession session = req.getSession() ;
+		ListeReglementsForm listeReglementForm = (ListeReglementsForm) session.getAttribute("listeReglementForm");
+ 		if (listeReglementForm != null) {
+ 			this.nom=listeReglementForm.getNom() ;
+ 			this.prenom = listeReglementForm.getPrenom() ;
+ 			this.numeroAdherent = listeReglementForm.getNumeroAdherent() ;
+ 		} else {
 		this.nom = null ;
 		this.prenom= null ;
 		this.numeroAdherent = 0 ;
@@ -37,6 +45,7 @@ public class ListeReglementsForm extends ActionForm {
 		this.reglementEleveDesc=null;
 		this.atelierEleve="0";
 		this.description= null ;
+ 		}
 	}
 		
 	public boolean isSuivant() {
@@ -45,11 +54,11 @@ public class ListeReglementsForm extends ActionForm {
 	public boolean isPrecedent() {
 		return this.pageable.hasPreviousPage() ;
 	}
-	public int getchoixPage() {
+	public int getChoixPage() {
 		return this.pageable.getPage() ;
 	}
-	public void setchoixPage(int page) {
-		this.pageable.setPage(page);
+	public void setChoixPage(int choixpage) {
+		this.pageable.setPage(choixpage);
 	}
 	public int getTaillePage () {
 		return this.pageable.getPageSize();
@@ -57,7 +66,7 @@ public class ListeReglementsForm extends ActionForm {
 	public void setTaillePage (int taillePage){
 		this.pageable.setPageSize(taillePage);
 	}
-	public List<Page> getListePage() {
+	public List<Page> getListePages() {
 		return this.pageable.getListePages();
 	}
 	public int getPageCourante() {
@@ -71,12 +80,12 @@ public class ListeReglementsForm extends ActionForm {
 		return (this.pageable.getListForPage().size()>0 && this.pageable.getPageSize()>0)
 				?this.pageable.getListForPage():null;		
 	}
-	public void setListeReglements(ArrayList<FicheReglementsForm> listReg) {
-		this.listeReglement = listReg ;
+	public void setListeReglements(List<FicheReglementsForm> listReg) {
+		this.listeReglements = listReg ;
 		if (this.pageable == null) {
-			this.pageable = new Pageable<FicheReglementsForm>(this.listeReglement);
+			this.pageable = new Pageable<FicheReglementsForm>(this.listeReglements);
 		} else {
-			this.pageable.setList(this.listeReglement);
+			this.pageable.setList(this.listeReglements);
 		}
 		this.pageable.setPage(1);
 	}

@@ -72,6 +72,7 @@
 
 	</fieldset>
  
+ 	<logic:notEmpty name="listeReglementsForm" property="listeReglements" >
 		<h3> <bean:message key="legendeReg"/> </h3>
 		
 		<table>
@@ -83,17 +84,36 @@
 				<th class="theadTabReg"> <bean:message key="montantReg"/> </th>
 			</tr>
 		</thead>
+		<tbody>
+		<logic:iterate id="id" name="listeReglementsForm" property="listeReglements" indexId="i">
+			<tr class="ligneTab">
+			<td class="colonneTab">
+				<strong><bean:write name="id" property="modeReglement"/> </strong>
+			</td>
+			<td class="colonneTab">
+				<strong><bean:write name="id" property="description"/> </strong>
+			</td>
+			<td class="colonneTab">
+				<strong><bean:write name="id" property="dateReglement"/> </strong>
+			</td>
+			<td class="colonneTab">
+				<strong><bean:write name="id" property="montantReglement"/> </strong>
+			</td>
+			</tr>
+		</logic:iterate>
+		</tbody>	
+				
 		</table>		
 		
 		<!-- 	Boutons de déplacement et de positionnement -->
 	
-		<logic:present name="listeReglementsForm" property="listePages">		
 		<html:select styleId="choixPage" 
 				 name="listeReglementsForm" property="choixPage"> 
+			<logic:present name="listeReglementsForm" property="listePages">		
 			<html:optionsCollection name="listeReglementsForm" property="listePages"
  									label="label" value="value"/>   
- 		</html:select>
-		</logic:present>
+			</logic:present>
+		</html:select>
 	
 	<logic:equal   name="listeReglementsForm" property="suivant" value="true">
 		<html:submit  styleId="BtnSuivant" styleClass="bouton" property="action">
@@ -114,7 +134,9 @@
 	</logic:present>
 	
 	<br>
-		
+	</logic:notEmpty>	
+	
+	<html:hidden property="action" styleId="action" value=""/>	
 	</html:form>
 </body>
 </html>

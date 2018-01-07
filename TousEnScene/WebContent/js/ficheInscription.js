@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	$('#choixPage').change(function() {
-		$("#popupListAdherent").dialog("open");
+		//$("#popupListAdherent").dialog("open");
 		soumettre("ZoneDeListe");
 	});
  //   $('#addAdhrent').click(function(){    
@@ -10,7 +10,6 @@ $(document).ready(function() {
 //        $('#dispatchClt').val('selectionAjax');
 //        $.unblockUI();
 //  }); 
-
 	
 	$(':radio.selRadioOpt').attr('checked', false);
 	

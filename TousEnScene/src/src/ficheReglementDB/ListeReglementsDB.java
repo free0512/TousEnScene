@@ -22,14 +22,15 @@ public class ListeReglementsDB {
 		try {
 			int taillePage = laForm.getTaillePage() ;
 			int pageCourante = laForm.getPageCourante() ;
-			int choixPage = laForm.getchoixPage() ;
+			int choixPage = laForm.getChoixPage() ;
 			laForm.setPageCourante(choixPage);
 			String sql = constituerRequet(laForm) ;
 			int startRow = pageCourante * taillePage ;
 			int lastRow = startRow + taillePage ;
-			 lecture = cnx.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+			lecture = cnx.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 													ResultSet.CONCUR_READ_ONLY) ;
-			 rs = lecture.executeQuery(sql) ;
+			rs = null ;
+			rs = lecture.executeQuery(sql) ;
 			rs.absolute(startRow) ;
 			ArrayList<FicheReglementsForm> listfiForm = new ArrayList<FicheReglementsForm>();
 			
@@ -42,7 +43,7 @@ public class ListeReglementsDB {
 		finally {
 			rs.close();
 			lecture.close();
-		}
+		}	
 	}
 	
 	public static String constituerRequet (ListeReglementsForm laForm) throws Exception {

@@ -19,18 +19,20 @@ public class ListeReglementsExecute extends Action{
 								  HttpServletResponse resp) throws Exception {
 		
 		HttpSession session = req.getSession(false);
-		SelectionAdherentsForm laForm = (SelectionAdherentsForm) session.getAttribute("savselectionAdherentsForm");
-		if (laForm == null) {
-			laForm = new SelectionAdherentsForm() ;}
+		ListeReglementsForm listeReglementForm = (ListeReglementsForm) form ;
+		SelectionAdherentsForm selectionAdherentForm = (SelectionAdherentsForm) session.getAttribute("savselectionAdherentsForm");
+		if (selectionAdherentForm == null) {
+			selectionAdherentForm = new SelectionAdherentsForm() ;}
 		else {
-		ListeReglementsForm frForm = (ListeReglementsForm) form ;
-		frForm.setNom(laForm.getNomEleveChoisi());
-		frForm.setPrenom(laForm.getPrenomEleveChoisi());
-		frForm.setNumeroAdherent(laForm.getRang());
-		frForm.setAgeEleve(laForm.getAgeEleve());
-		frForm.setAtelierEleve(laForm.getAtelierEleve());
-		frForm.setReglementEleve(laForm.getReglementEleve());
+		
+			listeReglementForm.setNom(selectionAdherentForm.getNomEleveChoisi());
+			listeReglementForm.setPrenom(selectionAdherentForm.getPrenomEleveChoisi());
+			listeReglementForm.setNumeroAdherent(selectionAdherentForm.getRang());
+			listeReglementForm.setAgeEleve(selectionAdherentForm.getAgeEleve());
+			listeReglementForm.setAtelierEleve(selectionAdherentForm.getAtelierEleve());
+			listeReglementForm.setReglementEleve(selectionAdherentForm.getReglementEleve());
 		}
+		session.setAttribute("listeReglementForm", listeReglementForm) ;
 		ListeReglementsLookUpDispatchAction li = new ListeReglementsLookUpDispatchAction();
 		return li.defilement(mapping, form, req, resp);
 	}	
