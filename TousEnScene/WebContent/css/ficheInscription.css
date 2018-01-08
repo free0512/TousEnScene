@@ -120,6 +120,11 @@
 	position : relative ;
 	border : 2px solid black ;
 }
+.boutonImage{
+	width: 20px;
+	height: 20px;
+}
+
 .basdepage {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 12px;

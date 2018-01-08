@@ -78,6 +78,7 @@
 		<table>
 		<thead>
 			<tr class="theadTabReg">
+				<th class="theadTabReg"> <bean:message key="action"/> </th>
 				<th class="theadTabReg"> <bean:message key="modReg"/> </th>
 				<th class="theadTabReg"> <bean:message key="desc"/> </th>
 				<th class="theadTabReg"> <bean:message key="dateReg"/> </th>
@@ -87,6 +88,12 @@
 		<tbody>
 		<logic:iterate id="id" name="listeReglementsForm" property="listeReglements" indexId="i">
 			<tr class="ligneTab">
+			<td class="colonneTab">
+				<html:image styleClass="boutonImage" page="/images/modif.png" 
+							title="Modification" />
+				<html:image styleClass="boutonImage" page="/images/suppr.jpg" 
+							title="suppression"/>
+			</td>	
 			<td class="colonneTab">
 				<strong><bean:write name="id" property="modeReglement"/> </strong>
 			</td>
