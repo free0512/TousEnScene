@@ -27,7 +27,12 @@
 	<h1> Fiche de réglement de l'adhérent </h1>
 <%-- 	 <html:errors bundle="erreur"/> --%>
 	<html:form styleId="form" action="/listeReglementsJSP.do">
-
+	
+	<html:hidden styleId="idMogRegChoisi" name="listeReglementsForm" property="modeReglementChoisi"/>
+	<html:hidden styleId="idDesChoisi" name="listeReglementsForm" property="descriptionChoisi"/>
+	<html:hidden styleId="idDatRegChoisi" name="listeReglementsForm" property="dateReglementChoisi"/>
+	<html:hidden styleId="idMntChoisi" name="listeReglementsForm" property="montantReglementChoisi"/>
+	
 	<fieldset>
 	<legend> <bean:message key="cadreSelAdhrent"/>  </legend>
 <!-- 	Sélection d'un adhérent -->
@@ -90,7 +95,11 @@
 			<tr class="ligneTab">
 			<td class="colonneTab">
 				<html:image styleClass="boutonImage" page="/images/modif.png" 
-							title="Modification" />
+							title="Modification"
+							onclick="selectionReglement('${id.modeReglement}' , 
+ 														   '${id.description}'      , 
+ 														   '${id.dateReglement}'   , 
+ 														   '${id.montantReglement}')" />
 				<html:image styleClass="boutonImage" page="/images/suppr.jpg" 
 							title="suppression"/>
 			</td>	

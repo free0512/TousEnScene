@@ -23,6 +23,10 @@ public class ListeReglementsForm extends ActionForm {
 	private int id_reglements ; 
 	private String modeReglement ;
 	private String description, ageEleve, atelierEleve, atelierEleveDesc, reglementEleve, reglementEleveDesc ;
+	
+	private String 	modeReglementChoisi, descriptionChoisi, dateReglementChoisi ;
+	private double montantReglementChoisi ;
+	
 	private List<FicheReglementsForm> listeReglements = null ;
 	private Pageable<FicheReglementsForm> pageable = new Pageable<FicheReglementsForm>(null);
 		
@@ -230,6 +234,38 @@ public class ListeReglementsForm extends ActionForm {
 
 	public void setAgeEleve(String ageEleve) {
 		this.ageEleve = ageEleve;
+	}
+
+	public String getModeReglementChoisi() {
+		return modeReglementChoisi;
+	}
+
+	public void setModeReglementChoisi(String modeReglementChoisi) {
+		this.modeReglementChoisi = modeReglementChoisi;
+	}
+
+	public String getDescriptionChoisi() {
+		return descriptionChoisi;
+	}
+
+	public void setDescriptionChoisi(String descriptionChoisi) {
+		this.descriptionChoisi = descriptionChoisi;
+	}
+
+	public String getDateReglementChoisi() {
+		return dateReglementChoisi;
+	}
+
+	public void setDateReglementChoisi(String dateReglementChoisi) {
+		this.dateReglementChoisi = dateReglementChoisi;
+	}
+
+	public double getMontantReglementChoisi() {
+		return montantReglementChoisi;
+	}
+
+	public void setMontantReglementChoisi(double montantReglementChoisi) {
+		this.montantReglementChoisi = montantReglementChoisi;
 	}
 	
 }
