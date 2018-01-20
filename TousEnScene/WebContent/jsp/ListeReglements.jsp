@@ -14,17 +14,17 @@
 <link rel="stylesheet" type="text/css" 
 	  href="${pageContext.request.contextPath}/css/ficheInscription.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/ficheInscription.js"> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/listeReglements.js"> 
 </script>
+	    	  
 	    	  
 <title> fiche Réglement adhérent </title>
 </head>
 <body>
-
-<span class="ModeAccess">
-<%-- 		 <bean:message key="${ficheInscription.modeAcces}"/> --%>
-	</span>	  
-	<h1> Fiche de réglement de l'adhérent </h1>
+	<span class="ModeAccess">
+		<bean:message key="${listeReglementsForm.modeAcces}"/>
+	</span>
+	<h1> <bean:message key="titreFicheReglement"/>  </h1>
 <%-- 	 <html:errors bundle="erreur"/> --%>
 	<html:form styleId="form" action="/listeReglementsJSP.do">
 	
@@ -32,6 +32,7 @@
 	<html:hidden styleId="idDesChoisi" name="listeReglementsForm" property="descriptionChoisi"/>
 	<html:hidden styleId="idDatRegChoisi" name="listeReglementsForm" property="dateReglementChoisi"/>
 	<html:hidden styleId="idMntChoisi" name="listeReglementsForm" property="montantReglementChoisi"/>
+	<html:hidden styleId="idChoisi" name="listeReglementsForm" property="numeroIdChoisi"/>
 	
 	<fieldset>
 	<legend> <bean:message key="cadreSelAdhrent"/>  </legend>
@@ -76,14 +77,15 @@
 	</span>			
 
 	</fieldset>
- 
- 	<logic:notEmpty name="listeReglementsForm" property="listeReglements" >
+ 	
+ 	 	<logic:notEmpty name="listeReglementsForm" property="listeReglements" >
 		<h3> <bean:message key="legendeReg"/> </h3>
 		
 		<table>
 		<thead>
 			<tr class="theadTabReg">
 				<th class="theadTabReg"> <bean:message key="action"/> </th>
+				<th class="theadTabReg"> <bean:message key="id"/> </th>
 				<th class="theadTabReg"> <bean:message key="modReg"/> </th>
 				<th class="theadTabReg"> <bean:message key="desc"/> </th>
 				<th class="theadTabReg"> <bean:message key="dateReg"/> </th>
@@ -99,12 +101,16 @@
 							onclick="selectionReglement('${id.modeReglement}' , 
  														   '${id.description}'      , 
  														   '${id.dateReglement}'   , 
- 														   '${id.montantReglement}')" />
+ 														   '${id.montantReglement}' ,
+ 														   '${id.numeroId}' )" />
 				<html:image styleClass="boutonImage" page="/images/suppr.jpg" 
 							title="suppression"/>
 			</td>	
 			<td class="colonneTab">
-				<strong><bean:write name="id" property="modeReglement"/> </strong>
+				<strong><bean:write name="id" property="numeroId"/> </strong>
+			</td>	
+			 <td class="colonneTab">
+				<strong><bean:write  name="id" property="libelleReglement"/> </strong>		
 			</td>
 			<td class="colonneTab">
 				<strong><bean:write name="id" property="description"/> </strong>

@@ -42,12 +42,3 @@ $(document).ready(function() {
 			//$.blockUI();
 		}
 	}	
-	
-	function selectionReglement (modeReglement, description, dateReglement, montantReglement) {
-		$('#idMogRegChoisi').val(modeReglement);
-		$('#idDesChoisi').val(description);
-		$('#idDatRegChoisi').val(dateReglement);
-		$('#idMntChoisi').val(montantReglement) ;
-		$('#action').val('choixDunReglement');
-		$('#form').submit();
-	}

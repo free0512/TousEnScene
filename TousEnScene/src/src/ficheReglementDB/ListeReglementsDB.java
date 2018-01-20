@@ -51,7 +51,7 @@ public class ListeReglementsDB {
 		String whereCond = "";
 		int numeroAdh= laForm.getNumeroAdherent() ;
 		whereCond += "where identifiant = " + numeroAdh ; 	
-		sql += whereCond + " order by datereglement" ;
+		sql += whereCond + " order by id_reglement desc" ;
 		return sql ;
 	}
 	
@@ -67,6 +67,7 @@ public class ListeReglementsDB {
 						   String.valueOf(date.year().get());
 		fiForm.setDateReglement(dateAlpha);
 		fiForm.setMontantReglement(rs.getDouble("montantreglement"));
+		fiForm.setNumeroId(rs.getInt("id_reglement"));
 		return fiForm ;
 		 
 	}

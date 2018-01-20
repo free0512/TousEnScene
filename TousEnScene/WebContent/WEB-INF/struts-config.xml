@@ -120,7 +120,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			type="src.ficheReglement.FicheReglementLookUpDispatchAction"
 			scope="session"
 			parameter="action">
-			<forward name="success" path="moduleFicheReg"/>
+			<forward name="success" path="/listeReglements.do"/>
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>
 	

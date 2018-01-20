@@ -15,21 +15,21 @@
 	<tr>
 		<td>
 			<html:link action="/creationFiche">
-			<span class="menuGaucheTxt"> Ajout d'un adhérent </span>
+			<span class="menuGaucheTxt"> <bean:message key="saisieAdherent"/> </span>
 			</html:link>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<html:link action="/listeAdherent">
-			<span class="menuGaucheTxt"> Liste des adhérents </span>
+			<span class="menuGaucheTxt"> <bean:message key="listeAdherent"/> </span>
 			</html:link>
 		</td>
 		</tr>
 		<tr>
 		<td>
 			<html:link action="/listeReglements">
-			<span class="menuGaucheTxt"> Fiche des réglements </span>
+			<span class="menuGaucheTxt"> <bean:message key="saisieFicheReglement"/> </span>
 			</html:link>
 		</td>
 	</tr>

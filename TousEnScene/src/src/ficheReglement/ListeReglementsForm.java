@@ -1,4 +1,4 @@
-package src.ficheReglement;
+ package src.ficheReglement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,10 @@ public class ListeReglementsForm extends ActionForm {
 	private int id_reglements ; 
 	private String modeReglement ;
 	private String description, ageEleve, atelierEleve, atelierEleveDesc, reglementEleve, reglementEleveDesc ;
-	
+	private String modeAcces ;
 	private String 	modeReglementChoisi, descriptionChoisi, dateReglementChoisi ;
 	private double montantReglementChoisi ;
+	private int numeroIdChoisi ;
 	
 	private List<FicheReglementsForm> listeReglements = null ;
 	private Pageable<FicheReglementsForm> pageable = new Pageable<FicheReglementsForm>(null);
@@ -49,6 +50,7 @@ public class ListeReglementsForm extends ActionForm {
 		this.reglementEleveDesc=null;
 		this.atelierEleve="0";
 		this.description= null ;
+		this.modeAcces="VIDE";
  		}
 	}
 		
@@ -266,6 +268,22 @@ public class ListeReglementsForm extends ActionForm {
 
 	public void setMontantReglementChoisi(double montantReglementChoisi) {
 		this.montantReglementChoisi = montantReglementChoisi;
+	}
+
+	public int getNumeroIdChoisi() {
+		return numeroIdChoisi;
+	}
+
+	public void setNumeroIdChoisi(int numeroIdChoisi) {
+		this.numeroIdChoisi = numeroIdChoisi;
+	}
+
+	public String getModeAcces() {
+		return modeAcces;
+	}
+
+	public void setModeAcces(String modeAcces) {
+		this.modeAcces = modeAcces;
 	}
 	
 }
