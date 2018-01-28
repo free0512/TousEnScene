@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.LookupDispatchAction;
+import org.apache.tomcat.jdbc.pool.DataSource;
 
 import src.ficheInscription.DB.ListeInscriptionDB;
 import src.ficheReglementDB.ListeReglementsDB;
@@ -105,22 +108,28 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			HttpServletResponse response ) throws Exception {
 		
 		ActionErrors err = new ActionErrors() ;
-		Connection cnx = null ;
-		ConnextionBean cb = new ConnextionBean () ;
-		cb.getDataSystem();
-		try {
-			Class.forName(cb.getDriver()) ;
-		} catch (ClassNotFoundException e) {
-			err.add("erreur", new ActionMessage("errChargeDriver"));
-			addErrors(request, err);
-		}
+//		Connection cnx = null ;
+//		ConnextionBean cb = new ConnextionBean () ;
+//		cb.getDataSystem();
+//		try {
+//			Class.forName(cb.getDriver()) ;
+//		} catch (ClassNotFoundException e) {
+//			err.add("erreur", new ActionMessage("errChargeDriver"));
+//			addErrors(request, err);
+//		}
 		
 		try {
 			HttpSession session = request.getSession(false) ;
+			
+			Context initialContext = new InitialContext() ;	
+			Context localContext = (Context) initialContext.lookup("java:comp/env/") ;
+			DataSource ds = (DataSource) localContext.lookup("jdbc/JNDI") ;
+			Connection cnx = ds.getConnection() ;
+			
 			ListeAdherentsForm laForm = (ListeAdherentsForm) form ;
 			if (laForm.getListeAdherents()==null ||
 				laForm.getListeAdherents().size()==0) {
-				cnx = DriverManager.getConnection(cb.getUrl(), cb.getProfil(), cb.getMdp()) ;
+//				cnx = DriverManager.getConnection(cb.getUrl(), cb.getProfil(), cb.getMdp()) ;
 				ListeInscriptionDB.rechercherListeAdherents(laForm, cnx);
 			} else {
 				laForm.setPageCourante(laForm.getChoixPage());
@@ -131,12 +140,12 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			addErrors(request, err);
 			return mapping.findForward("failed") ;
 		}
-		finally {
-			if ( cnx != null ) {
-	            try {
-	                cnx.close();
-	            } catch ( SQLException ignore ) {}
-			}
-		}
+//		finally {
+//			if ( cnx != null ) {
+//	            try {
+//	                cnx.close();
+//	            } catch ( SQLException ignore ) {}
+//			}
+//		}
 	}
 }

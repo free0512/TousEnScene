@@ -44,6 +44,7 @@ public class ListeReglementsExecute extends Action{
 		listeReglementForm.setModeReglementChoisi(null);
 		listeReglementForm.setMontantReglementChoisi(0);
 		listeReglementForm.setNumeroIdChoisi(0);
+		listeReglementForm.setModeAcces("CRT");
 		session.setAttribute("listeReglementForm", listeReglementForm) ;
 		ListeReglementsLookUpDispatchAction li = new ListeReglementsLookUpDispatchAction();
 		return li.defilement(mapping, form, req, resp);

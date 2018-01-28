@@ -1,20 +1,13 @@
 package src.ficheInscription;
 
-import java.sql.Date;
-import java.time.LocalDate;
- 
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
@@ -31,7 +24,8 @@ public class FicheInscriptionForm extends ActionForm {
 					autoriser, siNonQui, photographier;
 	private HashMap sexeRadio, majoriteRadio, atelierRadio, reglementRadio, ouiNonRadio , classRadio;
 	private int  codePostal ;
-	private GregorianCalendar dateDeNaissance ;
+	//private GregorianCalendar dateDeNaissance ;
+	private DateTime dateDeNaissance ;
 	private String ageEleve , modeAcces ;
 	int statusInsert, numeroInterne ; 
 	
@@ -43,6 +37,7 @@ public class FicheInscriptionForm extends ActionForm {
 		this.prenomEleve=null;
 		this.classeScolaire=null;
 		this.dateDeNaissanceEleve=null;
+		this.dateDeNaissance = null ;
 		this.adresse1=null;
 		this.adresse2=null;
 		this.codePostal=0;
@@ -67,22 +62,34 @@ public class FicheInscriptionForm extends ActionForm {
 		this.photographier=null;
 	}
 	
-	@SuppressWarnings("deprecation")
-	public GregorianCalendar getDateDeNaissance() {
-		int jour, mois, annee ;
+//	public GregorianCalendar getDateDeNaissance() {
+//		int jour, mois, annee ;
+//		String[] dateTab = dateDeNaissanceEleve.split("/") ;
+//		try {
+//			jour = Integer.parseInt(dateTab[0]) ;
+//			mois = Integer.parseInt(dateTab[1]) ;
+//			annee= Integer.parseInt(dateTab[2]) ;
+//			dateDeNaissance = new GregorianCalendar(annee, mois, jour) ;
+//					
+//			return dateDeNaissance ;
+//		} catch (Exception e) {}
+//		
+//		return null ;
+//	}
+	 
+	public DateTime getDateDeNaissance() {
+		DateTime dateTime ;
 		String[] dateTab = dateDeNaissanceEleve.split("/") ;
-		try {
-			jour = Integer.parseInt(dateTab[0]) ;
-			mois = Integer.parseInt(dateTab[1]) ;
-			annee= Integer.parseInt(dateTab[2]) ;
-			dateDeNaissance = new GregorianCalendar(annee, mois, jour) ;
-					
-			return dateDeNaissance ;
-		} catch (Exception e) {}
-		
-		return null ;
+		String aaaa_mm_jj = dateTab[2]+'-'+dateTab[1]+'-'+dateTab[0];
+	try {
+		dateTime = new DateTime(aaaa_mm_jj);					
+		} catch (Exception e) {
+			return null ;
+		}
+		return dateTime ;
 	}
-
+	
+	
 	public HashMap getOuiNonRadio() {
 		HashMap h = new HashMap () ;
 		h.put("O", "Oui") ;

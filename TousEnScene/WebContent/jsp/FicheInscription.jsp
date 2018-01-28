@@ -18,11 +18,10 @@
 <title> fiche Inscription adhérent </title>
 </head>
 <body>
-	<span class="ModeAccess">
-		 <bean:message key="${ficheInscription.modeAcces}"/>
-	</span>	  
-	<h1> Bulletin d'Inscription de la saison </h1>
-	
+<span class="ModeAccess">
+	 <bean:message key="${ficheInscription.modeAcces}"/>
+</span>	  
+
 	<html:form styleId="form" action="/ficheInscription.do">
 	
 	<html:hidden name="ficheInscription" property="numeroInterne"/>
@@ -46,7 +45,8 @@
 			</span> 
 		</logic:notEqual>
 	</logic:equal>
-	
+	<div id="pageInscription">	
+	<h1> Bulletin d'Inscription de la saison </h1>
 	<fieldset>
 	<legend> <bean:message key="idEleve"/>  </legend>
 	
@@ -235,7 +235,7 @@
 		</logic:iterate>
 		</span>
 		<br>
-		<span class="basdepage"> Tous les ch&eacute;ques sont à remettre à l'inscription, Encaissement le 5 de chaque mois.  
+		<span class="basdepage"> <bean:message key="textInscription"/>  
 		</span>
 		<br>
 	</fieldset>
@@ -296,15 +296,16 @@
 	</fieldset>
 	
 	<br>
-	
+	</div>
 	<html:submit  styleClass="bouton" property="action" > 
 		<bean:message key="valider"/> 
 	</html:submit>
-	<html:submit styleClass="bouton" property="action">
-		<bean:message key="annuler"/> 
+	<html:submit styleId="imprimer" styleClass="bouton" property="action">
+		<bean:message key="imprimer"/> 
 	</html:submit>
 	<br>&nbsp; 
 	
 	</html:form>
+
 </body>
 </html>

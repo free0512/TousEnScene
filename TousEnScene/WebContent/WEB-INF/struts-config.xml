@@ -68,6 +68,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			<forward name="success" path="/listeAdherent.do"/>
 			<forward name="failed" path="moduleFiche"/>
 			<forward name="annulerFiche"  path="modele"/>
+			<forward name="fiche" path="/creationFiche2.do"/>
 	</action>
 	<action path="/listeAdherentJSP"
 			type="src.ficheInscription.ListeInscriptionLookUpDispatchAction"

@@ -4,28 +4,18 @@ $(document).ready(function() {
 		//$("#popupListAdherent").dialog("open");
 		soumettre("ZoneDeListe");
 	});
- //   $('#addAdhrent').click(function(){    
-//        $( "#popupListeClient" ).dialog( "open" );
-//    	soumettre("Validation") ;
-//        $('#dispatchClt').val('selectionAjax');
-//        $.unblockUI();
-//  }); 
+	
+	$('#imprimer').click(function() {
+		var divToPrint=document.getElementById('pageInscription');
+		  var newWin=window.open('','Print-Window');
+		  newWin.document.open();
+		  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+		  newWin.document.close();
+		  setTimeout(function(){newWin.close();},10);
+	} );
 	
 	$(':radio.selRadioOpt').attr('checked', false);
 	
-//	$( "#popupListAdherent" ).dialog({
-//        autoOpen: false,
-//        height: 600,
-//        width: 1000,
-//        modal: true,
-//        close: function() {
-//              resetForm('formLstClt');
-//        // On remet la fenetre de devant
-//       if( $('#contentPopupLstClient .flip-container').hasClass('flip')){
-//          $('#contentPopupLstClient .flip-container').removeClass('flip');
-//        }
-//     }
-// });
 }) ;
 	
 	function selectionAdherent(valeur) {

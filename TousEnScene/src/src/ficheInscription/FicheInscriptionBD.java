@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.joda.time.DateTime;
 
 public class FicheInscriptionBD {
 	
@@ -42,9 +43,9 @@ public class FicheInscriptionBD {
 			st = cnx.prepareStatement(reqSQL);
 			//st = cnx.createStatement() ;
 			//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			LocalDate locadate = LocalDate.parse(fins.getDateDeNaissanceEleve(), formatter) ;
-			Date sqlDate = Date.valueOf(locadate);
+			String[] dateTab = fins.getDateDeNaissanceEleve().split("/") ;
+			String aaaa_mm_jj = dateTab[2]+'-'+dateTab[1]+'-'+dateTab[0];
+			Date sqlDate = Date.valueOf(aaaa_mm_jj);
 
 			st.setString(1, (fins.getNomEleve()  != null) ? fins.getNomEleve() : "");
 			st.setString(2, (fins.getPrenomEleve() != null) ? fins.getPrenomEleve() : "");			
@@ -110,9 +111,9 @@ public class FicheInscriptionBD {
 		try {
 			st = cnx.prepareStatement(reqSQL);
 
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			LocalDate locadate = LocalDate.parse(fins.getDateDeNaissanceEleve(), formatter) ;
-			Date sqlDate = Date.valueOf(locadate);
+			String[] dateTab = fins.getDateDeNaissanceEleve().split("/") ;
+			String aaaa_mm_jj = dateTab[2]+'-'+dateTab[1]+'-'+dateTab[0];
+			Date sqlDate = Date.valueOf(aaaa_mm_jj);
 
 			st.setString(1, (fins.getNomEleve()  != null) ? fins.getNomEleve() : "");
 			st.setString(2, (fins.getPrenomEleve() != null) ? fins.getPrenomEleve() : "");			

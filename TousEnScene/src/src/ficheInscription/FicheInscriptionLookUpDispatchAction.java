@@ -2,20 +2,15 @@ package src.ficheInscription;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -23,12 +18,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.LookupDispatchAction;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
+import org.apache.tomcat.jdbc.pool.DataSource;
 
-import src.system.ConnextionBean;
 
 public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 	
@@ -38,7 +29,7 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 		// TODO Auto-generated method stub
 		HashMap mapFiche = new HashMap () ;
 		mapFiche.put("valider", "validerFiche") ;
-		mapFiche.put("annuler", "annulerFiche") ;
+		mapFiche.put("imprimer", "imprimerFiche") ;
 		mapFiche.put("age", "ageElv") ;
 		return mapFiche ;
 	}
@@ -57,22 +48,26 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 		if (!validsaisie) {
 			return mapping.findForward("failed") ;
 		}
-		ConnextionBean cb = new ConnextionBean () ;
-		cb.getDataSystem();
-		Connection connexion = null;
-		
-		try {
-			Class.forName(cb.getDriver()) ;
-		} catch ( ClassNotFoundException e ) 
-			{ actionErrors.add("erreur", 
-						new ActionMessage("errChargeDriver"));
-			}
-		try {
-			connexion = DriverManager.getConnection(cb.getUrl(), 
-													cb.getProfil(),
-													cb.getMdp());
-			//DataSource ds =  getDataSource (request , "enidb");
-			//Connection cnx = ds.getConnection() ;
+//		ConnextionBean cb = new ConnextionBean () ;
+//		cb.getDataSystem();
+//		Connection connexion = null;
+//		
+//		try {
+//			Class.forName(cb.getDriver()) ;
+//		} catch ( ClassNotFoundException e ) 
+//			{ actionErrors.add("erreur", 
+//						new ActionMessage("errChargeDriver"));
+//			}
+//		try {
+//			connexion = DriverManager.getConnection(cb.getUrl(), 
+//													cb.getProfil(),
+//													cb.getMdp());
+			
+		Context initialContext = new InitialContext() ;	
+		Context localContext = (Context) initialContext.lookup("java:comp/env/") ;
+		DataSource ds = (DataSource) localContext.lookup("jdbc/JNDI") ;
+		Connection connexion = ds.getConnection() ;
+					
 			FicheInscriptionForm fins = (FicheInscriptionForm) form ;
 			FicheInscriptionBD finsDB = new FicheInscriptionBD() ;
 			if (fins.getNumeroInterne()==0) {
@@ -82,22 +77,22 @@ public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {
 			return finsDB.changeFicheIns(mapping, connexion, form) ;
 			}
 			
-		} catch (SQLException e)  
-			{ 
-			actionErrors.add("erreur", new ActionMessage("Err_connexion_bd")); 
-			return mapping.findForward("failed") ;
-			}	
-	 finally {
-		connexion.close() ;		
-	 		}
+//		} catch (SQLException e)  
+//			{ 
+//			actionErrors.add("erreur", new ActionMessage("Err_connexion_bd")); 
+//			return mapping.findForward("failed") ;
+//			}	
+//	 finally {
+//		connexion.close() ;		
+//	 		}
 	}	
 
-	public ActionForward annulerFiche (	ActionMapping mapping ,
+	public ActionForward imprimerFiche (	ActionMapping mapping ,
 										ActionForm form ,
 										HttpServletRequest request ,
 										HttpServletResponse response ) {
 		
-		return mapping.findForward("annulerListe") ;
+		return mapping.findForward("fiche") ;
 	}
 	
 	public boolean validationSaisie (ActionMapping mapping, ActionForm form ,

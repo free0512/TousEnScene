@@ -33,6 +33,7 @@
 	<html:hidden styleId="idDatRegChoisi" name="listeReglementsForm" property="dateReglementChoisi"/>
 	<html:hidden styleId="idMntChoisi" name="listeReglementsForm" property="montantReglementChoisi"/>
 	<html:hidden styleId="idChoisi" name="listeReglementsForm" property="numeroIdChoisi"/>
+	<html:hidden styleId="idmodeAcces" name="listeReglementsForm" property="modeAcces"/>
 	
 	<fieldset>
 	<legend> <bean:message key="cadreSelAdhrent"/>  </legend>

@@ -45,13 +45,6 @@
 	<html:submit  styleId="btnvalider" styleClass="bouton" property="action" > 
 		<bean:message key="valider"/> 
 	</html:submit>
-	<html:submit  styleClass="bouton" property="action" > 
-		<bean:message key="initialiser"/> 
-	</html:submit>
-	<html:submit styleClass="bouton" property="action">
-		<bean:message key="annuler"/> 
-	</html:submit>
-	<br>
 	</fieldset>
 
 <!-- 	Les enregistrements détail -->
