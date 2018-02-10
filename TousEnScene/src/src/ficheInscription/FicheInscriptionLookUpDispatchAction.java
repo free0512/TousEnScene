@@ -2,7 +2,6 @@ package src.ficheInscription;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.sql.DataSource;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -18,7 +17,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.LookupDispatchAction;
-import org.apache.tomcat.jdbc.pool.DataSource;
 
 
 public class FicheInscriptionLookUpDispatchAction extends LookupDispatchAction {

@@ -2,6 +2,7 @@ package src.ficheReglementDB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -28,8 +29,8 @@ public class ListeReglementsDB {
 			int startRow = pageCourante * taillePage ;
 			int lastRow = startRow + taillePage ;
 			lecture = cnx.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-													ResultSet.CONCUR_READ_ONLY) ;
-			rs = null ;
+												ResultSet.CONCUR_READ_ONLY) ;
+			try {	
 			rs = lecture.executeQuery(sql) ;
 			rs.absolute(startRow) ;
 			ArrayList<FicheReglementsForm> listfiForm = new ArrayList<FicheReglementsForm>();
@@ -39,7 +40,8 @@ public class ListeReglementsDB {
 				listfiForm.add(fiForm);
 			}
 			laForm.setListeReglements(listfiForm);
-		} catch (Exception e) {}
+			} catch(SQLException e) {System.out.println(e.getMessage());}	
+			} catch (Exception e) {}
 		finally {
 			rs.close();
 			lecture.close();

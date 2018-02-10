@@ -47,6 +47,8 @@ public class ListeReglementsExecute extends Action{
 		listeReglementForm.setModeAcces("CRT");
 		session.setAttribute("listeReglementForm", listeReglementForm) ;
 		ListeReglementsLookUpDispatchAction li = new ListeReglementsLookUpDispatchAction();
+		if (listeReglementForm.getNumeroAdherent() !=0 )
 		return li.defilement(mapping, form, req, resp);
+		return mapping.findForward("success");
 	}	
 }

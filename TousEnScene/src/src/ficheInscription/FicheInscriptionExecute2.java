@@ -1,12 +1,14 @@
 package src.ficheInscription;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
@@ -15,7 +17,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-import src.system.ConnextionBean;
 
 public class FicheInscriptionExecute2 extends Action {
 	
@@ -38,22 +39,26 @@ public class FicheInscriptionExecute2 extends Action {
 		HttpSession session = req.getSession(false);
 		ActionErrors err = new ActionErrors() ;
 		
-		ConnextionBean cb = new ConnextionBean () ;
-		cb.getDataSystem();
+//		ConnextionBean cb = new ConnextionBean () ;
+//		cb.getDataSystem();
 		Connection connexion = null;
-		
+//		
+//		try {
+//			Class.forName(cb.getDriver()) ;
+//		} catch ( ClassNotFoundException e ) 
+//			{ err.add("erreur", 
+//						new ActionMessage("errChargeDriver"));
+//			addErrors(req, err);
+//			}
+//		try {
+//			connexion = DriverManager.getConnection(cb.getUrl(), 
+//													cb.getProfil(),
+//													cb.getMdp());
 		try {
-			Class.forName(cb.getDriver()) ;
-		} catch ( ClassNotFoundException e ) 
-			{ err.add("erreur", 
-						new ActionMessage("errChargeDriver"));
-			addErrors(req, err);
-			}
-		try {
-			connexion = DriverManager.getConnection(cb.getUrl(), 
-													cb.getProfil(),
-													cb.getMdp());
-			
+			Context initialContext = new InitialContext() ;
+			Context localContext = (Context) initialContext.lookup("java:comp/env/") ;
+			DataSource ds = (DataSource) localContext.lookup("jdbc/JNDI") ;
+			connexion = ds.getConnection() ;
 			FicheInscriptionBD finsDB = new FicheInscriptionBD() ;
 			FicheInscriptionForm fi = finsDB.lireFicheAdherent(mapping, req, connexion, fiForm) ;
 			session.setAttribute("ficheInscription", fi);
@@ -67,7 +72,7 @@ public class FicheInscriptionExecute2 extends Action {
 			err.add("erreur", new ActionMessage("Err_connexion_bd")); 
 			addErrors(req, err);
 			return mapping.findForward("failed") ;
-			}	
+ 			}	
 	 finally {
 		connexion.close() ;		
 	 		}

@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<h1> Liste des adhérents de la saison </h1>
+	<h1> Liste des adhérents de la saison : </h1>
 		
 	<html:form styleId="form" action="/listeAdherentJSP.do">
 	<html:hidden styleId="rangId" name="listeAdherentsForm" property="rang"/>	 

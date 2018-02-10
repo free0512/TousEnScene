@@ -1,9 +1,7 @@
 package src.ficheInscription;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -19,11 +18,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.LookupDispatchAction;
-import org.apache.tomcat.jdbc.pool.DataSource;
+
 
 import src.ficheInscription.DB.ListeInscriptionDB;
-import src.ficheReglementDB.ListeReglementsDB;
-import src.system.ConnextionBean;
 
 public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 
@@ -108,7 +105,7 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			HttpServletResponse response ) throws Exception {
 		
 		ActionErrors err = new ActionErrors() ;
-//		Connection cnx = null ;
+		Connection cnx = null ;
 //		ConnextionBean cb = new ConnextionBean () ;
 //		cb.getDataSystem();
 //		try {
@@ -121,10 +118,10 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 		try {
 			HttpSession session = request.getSession(false) ;
 			
-			Context initialContext = new InitialContext() ;	
+			Context  initialContext = new InitialContext() ;	
 			Context localContext = (Context) initialContext.lookup("java:comp/env/") ;
-			DataSource ds = (DataSource) localContext.lookup("jdbc/JNDI") ;
-			Connection cnx = ds.getConnection() ;
+			DataSource ds = (DataSource) localContext.lookup("jdbc/JNDI") ;		
+			cnx = ds.getConnection() ;
 			
 			ListeAdherentsForm laForm = (ListeAdherentsForm) form ;
 			if (laForm.getListeAdherents()==null ||
@@ -140,12 +137,12 @@ public class ListeInscriptionLookUpDispatchAction extends LookupDispatchAction{
 			addErrors(request, err);
 			return mapping.findForward("failed") ;
 		}
-//		finally {
-//			if ( cnx != null ) {
-//	            try {
-//	                cnx.close();
-//	            } catch ( SQLException ignore ) {}
-//			}
-//		}
+		finally {
+			if ( cnx != null ) {
+	            try {
+	                cnx.close();
+	            } catch ( SQLException ignore ) {}
+			}
+		}
 	}
 }

@@ -55,4 +55,11 @@
 		<taglib-location>/WEB-INF/tlds/struts-tiles.tld</taglib-location>
 	</taglib>
 </jsp-config>
+
+<resource-ref>
+		<res-ref-name> jdbc/JNDI </res-ref-name>
+		<res-type> javax-sql-DataSource </res-type>
+		<res-auth> Container </res-auth>
+</resource-ref>	
+	
 </web-app>

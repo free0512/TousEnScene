@@ -29,16 +29,18 @@ public class ListeInscriptionDB {
 			int lastRow = startRow + taillePage ;
 			 lecture = cnx.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 													ResultSet.CONCUR_READ_ONLY) ;
-			 rs = lecture.executeQuery(sql) ;
-			rs.absolute(startRow) ;
-			ArrayList<FicheInscriptionForm> listfiForm = new ArrayList<FicheInscriptionForm>();
+			try { 
+				rs = lecture.executeQuery(sql) ;
+				rs.absolute(startRow) ;
+				ArrayList<FicheInscriptionForm> listfiForm = new ArrayList<FicheInscriptionForm>();
 			
-			while (rs.next()) {
+				while (rs.next()) {
 				FicheInscriptionForm fiForm = mapperVariables(rs) ;
-				listfiForm.add(fiForm);
-			}
-			laForm.setListeAdherents(listfiForm);
-		} catch (Exception e) {}
+				listfiForm.add(fiForm);	 	
+				}	
+				laForm.setListeAdherents(listfiForm);
+			} catch(SQLException e) {System.out.println(e.getMessage());}	
+		} catch (Exception e) {System.out.println(e.getMessage());}
 		finally {
 			rs.close();
 			lecture.close();
