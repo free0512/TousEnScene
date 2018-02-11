@@ -25,12 +25,20 @@
 			<span class="menuGaucheTxt"> <bean:message key="listeAdherent"/> </span>
 			</html:link>
 		</td>
-		</tr>
-		<tr>
+	</tr>
+	<tr>
 		<td>
 			<html:link action="/listeReglements">
 			<span class="menuGaucheTxt"> <bean:message key="saisieFicheReglement"/> </span>
 			</html:link>
 		</td>
 	</tr>
+	<tr> <td> ------------------------------------- </td></tr>
+	<tr>
+		<td> 
+			<html:link action="/recapAdhSeances">
+			<span class="menuGaucheTxt"> <bean:message key="recapAdhSeanceTitre"/> </span>
+			</html:link>
+		</td>
+	</tr>			
 </table>
