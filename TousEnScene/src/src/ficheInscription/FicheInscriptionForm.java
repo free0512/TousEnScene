@@ -11,6 +11,8 @@ import org.apache.struts.action.ActionMapping;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
+import src.parametres.TableDeBase;
+
 public class FicheInscriptionForm extends ActionForm {
 	/**
 	 * 
@@ -28,6 +30,7 @@ public class FicheInscriptionForm extends ActionForm {
 	private DateTime dateDeNaissance ;
 	private String ageEleve , modeAcces ;
 	int statusInsert, numeroInterne ; 
+	TableDeBase tableDeBase = new TableDeBase () ;
 	
 
 	public void reset2 (ActionMapping mapping, HttpServletRequest req) {
@@ -142,14 +145,15 @@ public class FicheInscriptionForm extends ActionForm {
 	}
 
 	public HashMap getAtelierRadio() {
-		HashMap h = new HashMap () ;
-		h.put("1", "Lundi 20h00 - 23h00 (Adultes)" ) ;
-		h.put("6", "Mercredi 20h00 - 22h00 (Adultes)");
-		h.put("2", "Mardi 17h30 - 19h00 (Enfants)");
-		h.put("4", "Mercredi 15h00 - 16h30 (Enfants)");
-		h.put("3", "Mardi 19h00 - 20h30 (Ados)");
-		h.put("5", "Mercredi 16h45 - 18h15 (Pré-ados)");
-		return h;
+//		HashMap h = new HashMap () ;
+//		h.put("1", "Lundi 20h00 - 23h00 (Adultes)" ) ;
+//		h.put("6", "Mercredi 20h00 - 22h00 (Adultes)");
+//		h.put("2", "Mardi 17h30 - 19h00 (Enfants)");
+//		h.put("4", "Mercredi 15h00 - 16h30 (Enfants)");
+//		h.put("3", "Mardi 19h00 - 20h30 (Ados)");
+//		h.put("5", "Mercredi 16h45 - 18h15 (Pré-ados)");
+//		return h;
+		return tableDeBase.getAtelierRadio() ;
 	}
 
 	public HashMap<String, String> getSexeRadio() {
@@ -311,7 +315,7 @@ public class FicheInscriptionForm extends ActionForm {
 		return atelierEleve;
 	}
 
-	public void setAtelierEleve(String atelierEleve) {
+	public void setAtelierEleve (String atelierEleve) {
 		this.atelierEleve = atelierEleve;
 	}
 

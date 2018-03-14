@@ -33,7 +33,7 @@
 			</html:link>
 		</td>
 	</tr>
-	<tr> <td> ------------------------------------- </td></tr>
+	<tr> <td> ------------------------------- </td></tr>
 	<tr>
 		<td> 
 			<html:link action="/recapAdhSeances">

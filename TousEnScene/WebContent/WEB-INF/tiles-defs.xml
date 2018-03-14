@@ -32,6 +32,13 @@
 		<put name="titre" value="Liste des adhérents" />
 		<put name="corps" value="/jsp/ListeAdherents.jsp"/>
 	</definition>
+	
+	<!-- 		Recap des adhérents par séance	 -->
+	<definition name="recapAdhParCrenauxTiles" extends="modele">
+		<put name="titre" value="Récap des adhérents"/>
+		<put name="corps" value="/jsp/RecapAdhParCreneauHoraire.jsp"/>
+ 		<put name="corps2" value=""/> 
+ 	</definition>
 
 <!--  	Ecran de connexion login.jsp -->
 	<definition name="modele2" extends="modele">

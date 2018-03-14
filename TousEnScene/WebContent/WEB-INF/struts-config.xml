@@ -27,6 +27,10 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 	</form-bean>
 	<form-bean name="ficheReglementsForm" type="src.ficheReglement.FicheReglementsForm">
 	</form-bean>
+	<form-bean name="recapAdhParCreneauForm" type="src.recapAdherents.RecapAdhParCreneauForm">
+	</form-bean>
+	<form-bean name="ficheCreneauform" type="src.recapAdherents.FicheCreneauForm">
+	</form-bean>
 </form-beans>
 
 <!-- <global-forwards> -->
@@ -124,7 +128,21 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
 			<forward name="success" path="/listeReglements.do"/>
 			<forward name="failed" path="moduleFicheReg"/>
 	</action>
-	
+	<action path="/recapAdhSeances"
+			name="recapAdhParCreneauForm"
+			type="src.recapAdherents.RecapAdhParCreneauExecute" 
+			scope="session">
+			<forward name="success" path="recapAdhParCrenauxTiles"/>
+			<forward name="failed" path="recapAdhParCrenauxTiles"/>
+	</action>
+	<action path="/recapAdhEntJSP"
+			type="src.recapAdherents.RecapAdhParCreneauLookUpDispatchAction"
+			name="recapAdhParCreneauForm"
+			input = "/jsp/RecapAdhParCreneauHoraire.jsp"
+			parameter="action"
+			scope="session">
+			<forward name="success" path="recapAdhParCrenauxTiles"/>
+	</action>	
 </action-mappings>
 
 <message-resources parameter="ressources.ficheIns" />

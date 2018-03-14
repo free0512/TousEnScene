@@ -23,6 +23,11 @@ $(document).ready(function() {
 		//$('#action').val('ouvrirFichAdherent');
 		//$('#form').submit();
 	}
+	function selectionCreneau(valeur) {
+		alert(valeur) ;
+		$('#creneauSel').val(valeur);
+		soumettre("selectionCreneauMethd")
+	}
 	
 	function soumettre(valeur) { 
 		if ($('#form').length > 0) { 
