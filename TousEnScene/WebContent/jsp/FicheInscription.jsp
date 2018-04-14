@@ -46,7 +46,7 @@
 		</logic:notEqual>
 	</logic:equal>
 	<div id="pageInscription">	
-	<h1> Bulletin d'Inscription de la saison </h1>
+	<h1> <bean:message key="BulletinInscription"/> </h1>
 	<fieldset>
 	<legend> <bean:message key="idEleve"/>  </legend>
 	
