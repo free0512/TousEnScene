@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="TousEnScene" path="/TousEnScene" reloadable="true">
+
+<Resource auth="Container" driverClassName="org.postgresql.Driver" 
+	name="jdbc/JNDI" type="javax.sql.DataSource" 
+	url="jdbc:postgresql://localhost:5432/TES"/>
+</Context>

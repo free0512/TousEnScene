@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="src.ficheReglement.ListeReglementsForm"/>
+    <fullyQualifiedTypeName name="src.ficheReglement.FicheReglementsForm"/>
+    <fullyQualifiedTypeName name="org.apache.struts.action.ActionMessage"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="org.joda.time.DateTime"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Enumeration"/>
+    <fullyQualifiedTypeName name="antlr.collections.impl.LList"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.jdbc.pool.DataSource"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.Context"/>
+    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+</qualifiedTypeNameHistroy>
