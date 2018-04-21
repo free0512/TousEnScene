@@ -2,14 +2,14 @@
 
 	<h1> L'application de gestion des adhérents de Tous en Scène</h1>
 	<pre>
-	Les entreprises doivent pouvoir compter sur une infrastructure suffisamment efficace pour supporter 
-	leurs applications stratégiques. Elles doivent être certaines que leurs systèmes et processus métier 
-	sont déployés par leurs différentes divisions conformément aux 	exigences de niveau de service les 
-	plus strictes et peuvent s'adapter à l'évolution de leurs besoins pour leur permettre de saisir 
-	sans cesse de nouvelles opportunités. Le système d'exploitation IBM i (anciennement i5/OS) sur 
-	serveur IBM Power Systems vous confère 	justement une architecture hautement évolutive et résistante
-	 aux virus, réputée pour sa résilience exceptionnelle. Les applications basées sur cette plate-forme 
-	 ont longtemps aidé les entreprises non seulement à mieux gérer leur centre de données, mais également à 
-	innover et à optimiser leurs processus stratégiques.
+	Le Théâtre. Cet Art existait déjà à l'époque grecque antique, mais a encore beaucoup de succès dans notre société actuelle. 
+	Sa définition reste pourtant très vaste et varie toujours selon chacun. 
+	« On l'aime ou on l'aime pas », comme nous dit une passante que nous interrogeons sur ses goûts. 
+	Il peut être, pour certains, source de plaisir, il peut procurer l'impression d'assister à quelque chose de grandiose, délicat et recherché, 
+	ou, pour d'autres, simplement provoquer un ennui profond.
+	Mais ces impressions varient également (et notamment) selon le metteur en scène. 
+	Ce dernier se doit d'être en accord avec le public, avec les modes du moment, ou au contraire, tout bouleverser. 
+	En d'autres termes, il n'a pas une tâche facile, d'autant plus lorsqu'il s'agit de la mise en scène d'une pièce de Molière, 
+	écrite au XVIIème siècle, ce qui amène inévitablement la question de la modernisation.
 	</pre>
     	
